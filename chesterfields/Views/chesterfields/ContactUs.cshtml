@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "ContactUs";
+}
+
+
+@if (Session["UserName"] == null)
+{
+    <script>
+        window.onload = function () {
+            {
+                window.location.href = "@Url.Action("index","Chesterfields")";
+            }
+        }
+    </script>
+}
+<div class="container-fluid" style="padding:0px">
+    <img src="~/Content/images/Hotel13_Main.jpg" width="100%" />
+</div>
+<div class="container" style="padding:50px">
+    <p style="font-size: 40px;"><strong>Contact Us</strong></p>
+    <p style="font-size: 20px;">
+        <strong>Gardenia</strong>,	Bangalore	<br>gardenia@gmail.com	<br>+080 2211 9898	<br>1, Residency Rd, Ashok Nagar, Bengaluru, Karnataka 560025
+    </p>
+
+    <p style="font-size: 20px;"><strong>Rajputana</strong>,	Jaipur	<br>rajputana@gmail.com<br>	+9114 1510 0100<br>	Rajputana, Jaipur Palace Road, Jaipur 302006, Rajasthan, India	</p>
+
+    <p style="font-size: 20px;"><strong>Windsor</strong>,	Bali	<br>Athena@gmail.com<br>	+62 361 738756<br>	Jl. Gn. Athena No.1, Padangsambian Klod, Denpasar Bar., Kota Denpasar, Bali 80361, Indonesia	</p>
+
+    <p style="font-size: 20px;"><strong>Mughal</strong>	,Agra<br>	Mughal@gmail.com	<br>+0562 402 1700<br>	Tajganj, Agra, Uttar Pradesh 282001</p>
+
+    <p style="font-size: 20px;"><strong>Anantara Veli</strong>,	Maldives	<br>Anantara@gmail.com<br>	+960 664-4100<br>	Veligandu, South Male Atoll 20109, Maldives	</p>
+
+    <p style="font-size: 20px;"><strong>Sheraton</strong>	,Delhi<br>	Sheraton@gmail.com	<br>+9111 4266 1122<br>	Sheraton New Delhi ,District Center Saket,New Delhi - 110017 India	</p>
+
+    <p style="font-size: 20px;"><strong>Maratha</strong>,	Mumbai<br>	Maratha@gmail.com<br>	+022 2830 3030<br>	Sahar Road, Opposite Chhatrapati Shivaji Airport, Andheri East, Mumbai, Maharashtra 400099	</p>
+    <p style="font-size: 20px;"><strong>Park Hyatt</strong>,	Dubai<br>	ParkHyatt@gmail.com<br>	+971 4435 5555<br>	Al Habtoor City, Sheikh Zayed Road, PO Box 124405, Dubai, United Arab Emirates </p>
+
+    <p style="font-size: 20px;"><strong>Maurya</strong>	,Mussoorie	<br>Maurya@gmail.com	<br>+9111 2611 2233<br>	Maurya Diplomatic Enclave, Sardar Patel Marg New Delhi , India	</p>
+
+    <p style="font-size: 20px;"><strong>Excelsior</strong>,	Venice<br>	excelsior@gmail.com<br>	+39 01 526 201<br>	Lungomare Guglielmo Marconi, 41, 30126  VE, Italy</p>
+
+    <p style="font-size: 20px;"><strong>Wilshire</strong>	,Canada	<br>wilshire@gmail.com<br>	+310 275 5200<br>	9500 Wilshire Boulevard Beverly Hills, CA 90212	</p>
+</div>
+
+

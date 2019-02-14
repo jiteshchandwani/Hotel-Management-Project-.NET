@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "faqs";
+}
+
+@if (Session["UserName"] == null)
+{
+    <script>
+        window.onload = function () {
+            {
+                window.location.href = "@Url.Action("index","Chesterfields")";
+            }
+        }
+    </script>
+}
+<div class="container-fluid" style="padding:0px">
+    <img src="~/Content/images/Hotel13_Main.jpg" width="100%" />
+</div>
+<div class="container" style="padding:50px">
+    <p style="font-size: 40px;"><strong>Frequently Asked Questions</strong></p>
+    <p style="font-size: 22px;color:#BE9750;">
+        I have a discount code/bonus cheque/reward night, where do I fill in the code when I book?
+    </p>
+    <p style="font-size: 20px;">Click on Booking Code, Bonus Cheque or Reward Night and enter the code in the ‘Add booking code’ field in our booking dialogue. Discount codes that you can use here include gift cards and promotion codes.</p>
+
+    <p style="font-size: 22px;color:#BE9750;">How do I book with a corporate agreement?</p>
+    <p style="font-size: 20px;">Click on Booking Code, Bonus Cheque or Reward Night and enter the code in the ‘Add booking code’ field in our booking dialogue. Enter the agreement code (eg. D number: D123456789).</p>
+
+    <p style="font-size: 22px;color:#BE9750;">How do I book with a student discount?</p>
+    <p style="font-size: 20px;">You must have a valid booking code. This can be found on the Mecenat website, along with terms and conditions for student discounts. Enter the code in the ‘Add booking code’ field in our booking dialogue.</p>
+
+    <p style="font-size: 22px;color:#BE9750;">How do I book a room online using a gift card?</p>
+    <p style="font-size: 20px;">Instructions for booking with a gift card can be found on the back of your gift card.</p>
+
+    <p style="font-size: 22px;color:#BE9750;">
+        How do I guarantee my reservation for late arrival?
+    </p>
+    <p style="font-size: 20px;">When you book your hotel stay you will get the option to click "Guarantee booking for late arrival and extras" in the booking process on the page Booking details and Terms for this booking. </p>
+
+    <p style="font-size: 22px;color:#BE9750;">
+        I am under 18 years of age, can I stay with you without a guardian/parent?
+    </p>
+    <p style="font-size: 20px;">Information about under-age reservations can be found under booking conditions.</p>
+
+    <p style="font-size: 22px;color:#BE9750;">
+        Can I bring my pet to Scandic?
+    </p>
+    <p style="font-size: 20px;">Information about booking with pets can be found under booking conditions.</p>
+
+    <p style="font-size: 22px;color:#BE9750;">
+        How do I cancel or make changes to my reservation?
+    </p>
+    <p style="font-size: 20px;">Bookings made on the website can be both changed or cancelled here, click on ‘View booking/Cancellation’. Bookings made via central booking or directly with the hotel cannot be changed/cancelled via the website. Please contact our central booking on telephone number +46 8 517 517 20.</p>
+
+    <p style="font-size: 22px;color:#BE9750;">
+        Can I book via the website without giving my credit card number?
+    </p>
+    <p style="font-size: 20px;">Yes, you can book without prepaying your reservation. Payment takes place at the hotel instead. However, reservations at a Save rate and some promotions must be paid at the time of booking.</p>
+
+    <p style="font-size: 22px;color:#BE9750;">Why can't I use my debit/credit card to book?</p>
+    <p style="font-size: 20px;">Be careful not to use any special characters in the boxes for name and card number, e.g. (.) (,) (-) (/) (:).</p>
+
+    <p style="font-size: 22px;color:#BE9750;">
+        I haven't received a booking confirmation, what should I do?
+    </p>
+    <p style="font-size: 20px;">Contact the hotel for assistance with your booking confirmation, or call our central booking on +46 8 517 517 00.</p>
+
+    <p style="font-size: 22px;color:#BE9750;">What do I do if I lose my reservation number?</p>
+    <p style="font-size: 20px;">
+        Contact the hotel for assistance with your reservation number or call our central booking on +46 8 517 517 20.
+    </p>
+</div>
+

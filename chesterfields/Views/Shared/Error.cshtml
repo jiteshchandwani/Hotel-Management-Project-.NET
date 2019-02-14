@@ -1,0 +1,21 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error</title>
+</head>
+<body style="text-align: center; font-family: ProximaNova-Light,Arial,sans-serif;overflow-x:hidden">
+    <div>
+        <img src="~/Content/images/ErrorImage.png" />
+        <h1>PAGE NOT FOUND</h1>
+        <p style="font-size: 25px">The rabbits have been nibbling the cables again...</p>
+        <p style="font-size: 25px">Maybe this will help <a href="@Url.Action("Index")">Home</a></p>
+        <p style="font-size: 15px">Well Error is  @Model.Exception.Message</p>
+    </div>
+</body>
+</html>

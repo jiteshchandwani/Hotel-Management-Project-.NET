@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="50999d3972724819a49188362941e499" Name="Diagram1" ZoomLevel="103">
+        <EntityTypeShape EntityType="ChesterfieldsModel.CustomerInfo" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChesterfieldsModel.HotelImage" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChesterfieldsModel.HotelInfo" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChesterfieldsModel.PaymentDetail" Width="1.5" PointX="8.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChesterfieldsModel.RoomBooking" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChesterfieldsModel.RoomDetail" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChesterfieldsModel.RoomImage" Width="1.5" PointX="7.5" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChesterfieldsModel.StayDetail" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ChesterfieldsModel.FK__HotelInfo__Custo__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="ChesterfieldsModel.FK__PaymentDe__Custo__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="ChesterfieldsModel.FK__RoomBooki__Custo__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="ChesterfieldsModel.FK__RoomDetai__Custo__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="ChesterfieldsModel.FK__HotelImag__Hotel__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="ChesterfieldsModel.FK__PaymentDe__Hotel__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="ChesterfieldsModel.FK__RoomBooki__Hotel__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="ChesterfieldsModel.FK__RoomDetai__Hotel__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="ChesterfieldsModel.FK__PaymentDe__RoomB__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="ChesterfieldsModel.FK__PaymentDe__RoomT__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="ChesterfieldsModel.FK__RoomBooki__RoomT__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="ChesterfieldsModel.FK__RoomImage__RoomT__29572725" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

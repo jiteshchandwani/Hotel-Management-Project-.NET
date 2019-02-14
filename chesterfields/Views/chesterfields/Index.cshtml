@@ -1,0 +1,701 @@
+﻿@model chesterfieldsDAL.CustomerInfo
+@{
+    ViewBag.Title = "Home Page";
+}
+<script>
+    window.onload = function showtq() {
+        disableBackButtonAllBrowsers();
+
+        document.getElementById('popupboxtq1').style.visibility = "@ViewBag.Tq";
+
+        setInterval(function () { document.getElementById('popupboxtq1').style.visibility = "hidden"; }, 3000);
+
+
+        document.getElementById('popupboxtq2').style.visibility = "@ViewBag.Tq2";
+
+        setInterval(function () { document.getElementById('popupboxtq2').style.visibility = "hidden"; }, 3000);
+
+          document.getElementById('popupboxerrlogin').style.visibility = "@ViewBag.Errorlogin";
+
+          setInterval(function () { document.getElementById('popupboxerrlogin').style.visibility = "hidden"; }, 3000);
+
+          document.getElementById('poproomsnotavaible').style.visibility = "@ViewBag.roomsnotavaible";
+
+          setInterval(function () { document.getElementById('poproomsnotavaible').style.visibility = "hidden"; }, 3000);
+
+        document.getElementById('popcheckmail').style.visibility = "@ViewBag.checkmail";
+
+        setInterval(function () { document.getElementById('popcheckmail').style.visibility = "hidden"; }, 3000);
+
+          document.getElementById('poperrforgotpass').style.visibility = "@ViewBag.errforgot";
+
+          setInterval(function () { document.getElementById('poperrforgotpass').style.visibility = "hidden"; }, 3000);
+
+         document.getElementById('popnoreserve').style.visibility = "@ViewBag.nul";
+
+         setInterval(function () { document.getElementById('popnoreserve').style.visibility = "hidden"; }, 3000);
+    }
+
+</script>
+
+
+<div id="popupboxlog">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        @using (Html.BeginForm("Loginfirst", "chesterfields", FormMethod.Post, new { }))
+        {
+            <br />
+            <center>Username</center>
+            <center>
+                @Html.TextBox("UserName", null, new { @class = "form-control", @type = "name", @pattern = "^[a-zA-Z]+[a-zA-Z0-9]*$", @required = "required", @title = "Username must start with letters and can contain letters and numbers only.", @autocomplete = "off" })
+                @Html.ValidationMessage("UserName", null, new { @class = "text-danger", @style = "color:#ffae42" })
+                @Html.ValidationMessageFor(model => model.UserName)
+            </center><br />
+
+            <center>Password</center>
+            <center>
+                @Html.Password("password", null, new { @class = "form-control", @type = "password", @pattern = "^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$", @required = "required", @title = "Password must be 8 characters in length and must contain 2 uppercase letters, 3 lowercase letters, 2 numbers and 1 special character." })
+                @Html.ValidationMessage("password", null, new { @class = "text-danger", @style = "color:#ffae42" })
+            </center>
+            <br />
+            <center><input type="submit" name="submit" value="login" class="btn form-control" style="background-color:#D2AC67" /></center>
+        }
+        <br />
+        <center>New user <a href="javascript:login('Register');"> Register </a> | <a href="javascript:login('forgotpassword');">Forgot Password</a></center>
+        <center><a href="javascript:login('hide');">close</a></center>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+<div id="popupboxtq1">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <center><h1>Thank you for login!</h1></center>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+<div id="popupboxerrlogin">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <center><h1>Wrong Login credentials !!</h1></center>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+<div id="popupboxtq2">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <center><h1>Thank you for Registering<br/>Please Login Now</h1></center>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+<div id="poproomsnotavaible">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <center><h1>Rooms Are Not Available <br />Please select another Hotel</h1></center>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+<div id="popcheckmail">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <center><h1>Check your Email <br /> for New Password</h1></center>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+<div id="poperrforgotpass">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <center><h1>Your Email or Username are Incorrect</h1></center>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+<div id="popnoreserve">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <center><h1>You don't have any reservation</h1></center>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+<div id="popupboxforgot">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        @using (Html.BeginForm("forgotPassword", "chesterfields", FormMethod.Post, new { }))
+        {
+            <center> <h1>Forgot Password</h1></center>
+            <br />
+            <center>Enter UserName</center>
+            <center>
+                @Html.TextBox("UserName", null, new { @class = "form-control", @type = "name", @pattern = "^[a-zA-Z]+[a-zA-Z0-9]*$", @required = "required", @title = "Username must start with letters and can contain letters and numbers only.", @autocomplete = "off" })
+                @Html.ValidationMessage("UserName", null, new { @class = "text-danger", @style = "color:#ffae42" })
+            </center><br />
+            <center>Enter Email</center>
+            <center>
+                @Html.TextBox("emailId", null, new { @class = "form-control", @type = "name", @pattern = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$", @required = "required", @title = "Fill Correct Contact Number" })
+                @Html.ValidationMessage("Email", null, new { @class = "text-danger", @style = "color:#ffae42" })
+            </center>
+            <br />
+            <center><input type="submit" name="submit" value="Sent Email" class="btn form-control" style="background-color:#D2AC67" /></center>
+            <br /> <center>Check your Email to for new password</center>
+        }
+        <br /> <center><a href="javascript:login('forgothide');">close</a></center>
+        <br />
+
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+
+<div id="popupboxreg">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <center> <h1>Register</h1></center>
+        @using (Html.BeginForm("registercustomer", "chesterfields", FormMethod.Post, new { }))
+        {
+            <TABLE>
+                <tr style="padding: 5px">
+                    <td style="padding: 5px"><label for="Customername"><b>Name</b></label></td>
+                    <td style="padding: 5px">
+                        @Html.TextBox("CustomerName", null, new { @class = "form-control", @type = "name", @pattern = "^[a-zA-Z\\s]*$", @required = "required", @title = "Customer name can contain letters only", })
+                        @Html.ValidationMessage("CustomerName", null, new { @class = "text-danger", @style = "color:#ffae42" })
+                    </td>
+                </tr>
+
+                <tr style="padding: 5px">
+                    <td style="padding: 5px"><label for="dob"><b>Date of Birth</b></label></td>
+                    <td style="padding: 5px">
+                        @Html.TextBox("Date_of_Birth ", null, new { @class = "form-control", @type = "date", @max = "2018-01-01", @required = "required", @title = "Please Enter the correct Date" })
+                        @Html.ValidationMessage("Date_of_Birth", null, new { @class = "text-danger", @style = "color:#ffae42" })
+
+                    </td>
+                </tr>
+
+                <tr style="padding: 5px">
+                    <td style="padding: 5px"><label for="dob"><b>Gender</b></label></td>
+                    @* <td style="padding: 5px">
+                            <label class="radio-inline">
+                                <input type="radio" name="optradio">Male
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="optradio">Female
+                            </label>
+                        </td>*@
+                    <td>
+                        @Html.DropDownList("Gender", new List<SelectListItem>
+                                {
+                                new SelectListItem {Text = "Male"},
+                                new SelectListItem {Text = "Female"},
+                                }, "Select Gender", new { @class = "form-control", @required = "required" })
+                        @Html.ValidationMessage("Gender", null, new { @class = "text-danger", @style = "color:#ffae42" })
+                    </td>
+                </tr>
+
+
+                <tr style="padding: 5px">
+
+                    <td style="padding: 5px"><label for="adrs"><b>Address</b></label></td>
+                    <td style="padding: 5px">
+                        @Html.TextBox("Customer_Address", null, new { @class = "form-control", @type = "name", @pattern = "[A-Za-z0-9'\\.\\-\\s\\,]", @required = "required", @title = "Fill Correct Address" })
+                        @Html.ValidationMessage("Customer_Address", null, new { @class = "text-danger", @style = "color:#ffae42" })
+                    </td>
+
+                <tr style="padding: 5px">
+                    <td style="padding: 5px"><label for="City"><b>City</b></label></td>
+                    <td style="padding: 5px">
+                        @Html.TextBox("City", null, new { @class = "form-control", @type = "name", @pattern = "[A-Za-z0-9'\\.\\-\\s\\,]", @required = "required", @title = "Fill Correct City" })
+                        @Html.ValidationMessage("City", null, new { @class = "text-danger", @style = "color:#ffae42" })
+                    </td>
+
+                <tr style="padding: 5px">
+                    <td style="padding: 5px"><label for="pincode"><b>Pin Code</b></label></td>
+                    <td style="padding: 5px">
+                        @Html.TextBox("Pin_Code", null, new { @class = "form-control", @pattern = "^[0-9]{6}$", @required = "required", @title = "Fill Correct Pin Code" })
+                        @Html.ValidationMessage("Pin_Code", null, new { @class = "text-danger", @style = "color:#ffae42" })
+                    </td>
+
+                <tr style="padding: 5px">
+                    <td style="padding: 5px"><label for="country"><b>Country</b></label></td>
+                    <td style="padding: 5px">
+                        @Html.TextBox("Country", null, new { @class = "form-control", @pattern = "[A-Za-z0-9'\\.\\-\\s\\,]", @required = "required", @title = "Fill Correct Country" })
+                        @Html.ValidationMessage("Country", null, new { @class = "text-danger", @style = "color:#ffae42" })
+                    </td>
+
+                <tr style="padding: 5px">
+                    <td style="padding: 5px"><label for="phoneno"><b>Contact Number</b></label></td>
+                    <td style="padding: 5px">
+
+                        @Html.TextBox("Phone_Number", null, new { @class = "form-control", @type = "name", @pattern = "^[0-9]{10}$", @required = "required", @title = "Fill Correct Contact Number" })
+                        @Html.ValidationMessage("Phone_Number", null, new { @class = "text-danger", @style = "color:#ffae42" })
+
+                    </td>
+
+                <tr style="padding: 5px">
+                    <td style="padding: 5px"><label for="email"><b>Email</b></label></td>
+                    <td style="padding: 5px">
+
+                        @Html.TextBox("Email", null, new { @class = "form-control", @type = "name", @pattern = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$", @required = "required", @title = "Fill Correct Email" })
+                        @Html.ValidationMessage("Email", null, new { @class = "text-danger", @style = "color:#ffae42" })
+                    </td>
+
+                <tr style="padding: 5px">
+                    <td style="padding: 5px"><label for="username"><b>User Name</b></label></td>
+                    <td style="padding: 5px">
+                        @Html.TextBox("UserName", null, new { @class = "form-control", @type = "name", @pattern = "^[a-zA-Z]+[a-zA-Z0-9]*$", @required = "required", @title = "Username must start with letters and can contain letters and numbers only.", @autocomplete = "off" })
+                        @Html.ValidationMessage("UserName", null, new { @class = "text-danger", @style = "color:#ffae42" })
+                    </td>
+
+                <tr style="padding: 5px">
+                    <td style="padding: 5px"><label for="psw"><b>Password</b></label></td>
+                    <td style="padding: 5px">
+                        @Html.Password("Passwordd", null, new { @class = "form-control", @id = "txtNewPassword", @type = "password", @pattern = "^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$", @required = "required", @title = "Password must be 8 characters in length and must contain 2 uppercase letters, 3 lowercase letters, 2 numbers and 1 special character." })
+                        @Html.ValidationMessage("Passwordd", null, new { @class = "text-danger", @style = "color:#ffae42" })
+
+                    </td>
+
+                <tr style="padding: 5px">
+                    <td style="padding: 5px"><label for="psw-repeat"><b>Confirm Password</b></label></td>
+                    <td style="padding: 5px">
+
+                        @Html.Password("ConfirmPasswordd", null, new { @class = "form-control", @id = "txtConfirmPassword", @onChange = "checkPasswordMatch();", @type = "password", @pattern = "^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$", @required = "required", @title = "Password must be 8 characters in length and must contain 2 uppercase letters, 3 lowercase letters, 2 numbers and 1 special character." })
+                        @Html.ValidationMessage("ConfirmPasswordd", null, new { @class = "text-danger", @style = "color:#ffae42" })
+                    </td>
+                </tr>
+                <tr><td><div id="divCheckPasswordMatch"> </div></td> </tr>
+            </TABLE>
+            <script>
+
+                function checkPasswordMatch() {
+                    var password = $("#txtNewPassword").val();
+                    var confirmPassword = $("#txtConfirmPassword").val();
+
+                    if (password != confirmPassword)
+                        $("#divCheckPasswordMatch").html("Passwords do not match!");
+                    else
+                        $("#divCheckPasswordMatch").html("Passwords match.");
+                }
+
+                $(document).ready(function () {
+                    $("#txtConfirmPassword").keyup(checkPasswordMatch);
+                });
+
+
+            </script>
+
+            <hr>
+            <p>By creating an account you agree to our Terms & Privacy.</p>
+
+            <center> <button type="submit" class="btn form-control" style="background-color:#D2AC67">Register</button></center>
+        }
+        <br />
+        <br />
+        <p>Already have an account? <a href="javascript:login('hideregandlog');">Sign in</a>.</p>
+    </div>
+
+
+
+    </form>
+    <center><a href="javascript:login('hidereg');"><i class="fa fa-remove"></i></a></center>
+</div>
+<div class="col-sm-2"></div>
+</div>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="~/Content/images/slider-1.jpg" alt="hotel-1" style="width:100%;height: 800px">
+        </div>
+
+        <div class="item">
+            <img src="~/Content/images/slider-2.jpg" alt="hotel-1" style="width:100%;height: 800px">
+        </div>
+
+        <div class="item">
+            <img src="~/Content/images/slider-3.jpg" alt="hotel-1" style="width:100%;height: 800px">
+        </div>
+
+        <div class="item">
+            <img src="~/Content/images/slider-4.jpg" alt="hotel-1" style="width:100%;height: 800px">
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+
+</div>
+<div class="search-wrap">
+    <div class="container">
+
+        <div style="background-color: rgba(0,0,0,.5);padding: 20px; color: #ffffff;">
+            <div id="hotel" class="tab-pane fade in active">
+                @using (Html.BeginForm("displayHotelDetails", "chesterfields", FormMethod.Post, new { }))
+                {
+                    <div class="row">
+
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="Location" style="font-size:18px">I Want To Holiday In...</label>
+                                <div class="form-field">
+                                    <i class="icon icon-arrow-down3"></i>
+                                    @Html.DropDownList("Location", new List<SelectListItem>
+{
+new SelectListItem {Text = "Bangalore"},
+new SelectListItem {Text = "Jaipur"},
+new SelectListItem {Text = "Greece"},
+new SelectListItem {Text = "Bali"},
+new SelectListItem {Text = "Agra"},
+new SelectListItem {Text = "Maldives"},
+new SelectListItem {Text = "Delhi"},
+new SelectListItem {Text = "Mumbai"},
+new SelectListItem {Text = "Dubai"},
+new SelectListItem {Text = "Mussoorie"},
+new SelectListItem {Text = "Venice"},
+new SelectListItem {Text = "Canada"},
+}, "Select Hotel location", new { @class = "form-control form-group", @required = "required", @title = "Select Location" })
+                                    @Html.ValidationMessage("Location", null, new { @class = "text-danger", @style = "color:#ffae42" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 ">
+                            @{ if (Session["UserName"] == null)
+                                {
+                                    <a href="javascript:login('show');" value="Find Hotels" class="btn  btn-block " style="margin-top: 27px; background-color:#D2AC67">
+                                        Find Hotel
+                                    </a>
+                                }
+                                else
+                                {
+                                    <button type="submit" value="Find Hotels" class="btn btn-block " style="margin-top: 27px; background-color:#D2AC67">Find Hotel</button>
+
+                                } }
+                        </div>
+                    </div>
+                                }
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+      </div>
+    </div>
+<div class="container-fluid" id="box" style="padding: 0px">
+    <h1 style="padding: 20px" align="center" id="package"> Indian Tour packages</h1>
+    <div class="col-md-3 imghov" style="padding: 0px">
+
+        @{ if (Session["UserName"] != null)
+            {
+            <a href="@Url.Action("Jaipur")">
+                <img src="~/Content/images/package9.jpg" width="100%" class="imgup" style=" position:relative">
+            </a>
+            }
+            else
+            { <a href="javascript:login('show');">
+    <img src="~/Content/images/package9.jpg" width="100%" class="imgup" style=" position:relative">
+</a>
+
+            } }
+            <p style="margin-top: -80px;font-size:30px;text-align:center;">Jaipur</p>
+            <p style="font-size:15px;text-align:center;">Package starting from Rs.65,000</p>
+
+        </div>
+    <div class="col-md-3 imghov" style="padding: 0px">
+        @{ if (Session["UserName"] != null)
+            {
+            <a href="@Url.Action("Package2")">
+                <img src="~/Content/images/package2.jpg" width="100%" class="imgup" style=" position:relative">
+            </a>
+            }
+            else
+            {
+                 <a href="javascript:login('show');">
+                <img src="~/Content/images/package2.jpg" width="100%" class="imgup" style=" position:relative">
+            </a>
+
+            } }
+            <p style="margin-top: -80px;font-size:30px;text-align:center;">Agra</p>
+            <p style="font-size:15px;text-align:center;">Package starting from Rs.55,500</p>
+
+        </div>
+    <div class="col-md-3 imghov" style="padding: 0px">
+        @{ if (Session["UserName"] != null)
+            {
+            <a href="@Url.Action("Package3")">
+                <img src="~/Content/images/package3.jpg" width="100%" class="imgup" style=" position:relative">
+            </a>
+            }
+            else
+            { <a href="javascript:login('show');">
+            <img src="~/Content/images/package3.jpg" width="100%" class="imgup" style=" position:relative">
+        </a> } }
+        <p style="margin-top: -80px;font-size:30px;text-align:center;">Mumbai</p>
+        <p style="font-size:15px;text-align:center;">Package starting from Rs.85,000</p>
+
+    </div>
+    <div class="col-md-3 imghov" style="padding: 0px">
+        @{ if (Session["UserName"] != null)
+            {
+            <a href="@Url.Action("Package4")">
+                <img src="~/Content/images/package4.jpg" width="100%" class="imgup" style=" position:relative">
+            </a>
+            }
+            else
+            { <a href="javascript:login('show');">
+            <img src="~/Content/images/package4.jpg" width="100%" class="imgup" style=" position:relative">
+        </a>
+            } }
+        <p style="margin-top: -80px;font-size:30px;text-align:center;">Mussoorie</p>
+        <p style="font-size:15px;text-align:center;">Package starting from Rs.95,000</p>
+
+    </div>
+</div>
+
+<div class="container-fluid" id="box1" style="padding: 0px; margin-top: 100px; margin-bottom: 100px">
+    <h1 style="padding: 20px" align="center"> International Tour packages</h1>
+    <div class="col-sm-3 imghov" style="padding: 0px">
+        @{ if (Session["UserName"] != null)
+        {
+
+            <a href="@Url.Action("Package5")">
+                <img src="~/Content/images/package5.jpg" width="100%" class="imgup" style=" position:relative">
+            </a>
+    }
+    else
+    { <a href="javascript:login('show');">
+            <img src="~/Content/images/package5.jpg" width="100%" class="imgup" style=" position:relative">
+        </a>
+            } }
+        <p style="margin-top: -80px;font-size:30px;text-align:center;">Bali</p>
+        <p style="font-size:15px;text-align:center;">Package starting from Rs.2,95,000</p>
+
+    </div>
+    <div class="col-sm-3 imghov" style="padding: 0px">
+        @{ if (Session["UserName"] != null)
+        {
+            <a href="@Url.Action("Package6")">
+                <img src="~/Content/images/package6.jpg" width="100%" class="imgup" style=" position:relative">
+            </a>
+    }
+    else
+    { <a href="javascript:login('show');">
+            <img src="~/Content/images/package6.jpg" width="100%" class="imgup" style=" position:relative">
+        </a> } }
+        <p style="margin-top: -80px;font-size:30px;text-align:center;">Santorini</p>
+        <p style="font-size:15px;text-align:center;">Package starting from Rs.2,05,000</p>
+
+    </div>
+    <div class="col-sm-3 imghov" style="padding: 0px">
+        @{ if (Session["UserName"] != null)
+        {
+            <a href="@Url.Action("Package7")">
+                <img src="~/Content/images/package7.jpg" width="100%" class="imgup" style=" position:relative">
+            </a>
+    }
+    else
+    { <a href="javascript:login('show');">
+            <img src="~/Content/images/package7.jpg" width="100%" class="imgup" style=" position:relative">
+        </a>
+            } }
+
+        <p style="margin-top: -80px;font-size:30px;text-align:center;">Maldives</p>
+        <p style="font-size:15px;text-align:center;">Package starting from Rs.2,75,500</p>
+
+    </div>
+    <div class="col-sm-3 imghov" style="padding: 0px">
+        @{ if (Session["UserName"] != null)
+        {
+            <a href="@Url.Action(" Package8")">
+                <img src="~/Content/images/package10.jpg" width="100%" class="imgup" style=" position:relative">
+            </a>
+    }
+    else
+    { <a href="javascript:login('show');">
+            <img src="~/Content/images/package10.jpg" width="100%" class="imgup" style=" position:relative">
+        </a> } }
+
+        <p style="margin-top: -80px;font-size:30px;text-align:center;">Dubai</p>
+        <p style="font-size:15px;text-align:center;">Package starting from Rs.1,75,500</p>
+
+    </div>
+</div>
+<div style="padding-top: 80px; padding-bottom: 30px"><div id="map"></div></div>
+
+<div class="container" style="padding-bottom: 40px; text-align: center; ">
+    <h1 style="padding: 20px" align="center" id="hotels"> Our Top hotels</h1>
+    <div class="col-md-4">
+        @{ if (Session["UserName"] != null)
+        { using(Html.BeginForm("displayHotelDetails", "chesterfields", FormMethod.Post, new { }))
+        { <div style="display:none">@Html.TextBox("Location", "Bangalore")</div>
+            <button type="submit">
+                <img src="~/Content/images/hotel1.jpg" width="100%" class="imgb1">
+            </button>}
+    }
+else
+{ <a href = "javascript:login('show');">
+
+                 <img src="~/Content/images/hotel1.jpg" width = "100%" class="imgb1">
+            </a>
+}
+}
+    <h3>The Chesterfield Gardenia</h3>
+
+    </div>
+    <div class="col-md-4">
+        @{ if (Session["UserName"] != null)
+        {
+            using (Html.BeginForm("displayHotelDetails", "chesterfields", FormMethod.Post, new { }))
+            { <div style="display:none">@Html.TextBox("Location", "Jaipur")</div>
+            <button type="submit">
+                <img src="~/Content/images/hotel2.jpg" width="100%" class="imgb1">
+            </button>}
+}
+else
+{ <a href="javascript:login('show');">
+
+        <img src="~/Content/images/hotel2.jpg" width="100%" class="imgb1">
+    </a>
+}
+        }
+        <h3>The Chesterfield Rajputana</h3>
+    </div>
+    <div class="col-md-4">
+        @{ if (Session["UserName"] != null)
+        {
+            using (Html.BeginForm("displayHotelDetails", "chesterfields", FormMethod.Post, new { }))
+            { <div style="display:none">@Html.TextBox("Location", "Greece")</div>
+            <button type="submit">
+                <img src="~/Content/images/hotel3.jpg" width="100%" class="imgb1">
+            </button>}
+}
+else
+{ <a href="javascript:login('show');">
+
+        <img src="~/Content/images/hotel3.jpg" width="100%" class="imgb1">
+    </a>
+}
+        }
+        <h3>The Chesterfield Windsor</h3>
+    </div>
+</div>
+<div class="container" style="padding-bottom:  20px; text-align: center;">
+
+    <div class="col-md-8">
+
+        <video width="100%" autoplay muted loop>
+            <source src="~/Content/video/Grand%20Presidential%20Family%20Suite%20at%20ITC%20Mughal,%20Agra.mp4" type="video/mp4" />
+        </video>
+
+        <h3>The Chesterfield Maratha</h3>
+    </div>
+
+    <div class="col-md-4">
+        <div class="container-fluid" style="padding-bottom: 20px">
+            @{ if (Session["UserName"] != null)
+        {
+            using (Html.BeginForm("displayHotelDetails", "chesterfields", FormMethod.Post, new { }))
+            { <div style="display:none">@Html.TextBox("Location", "Delhi")</div>
+            <button type="submit">
+                <img src="~/Content/images/hotel4.jpg" width="100%" class="imgb1">
+            </button>}
+}
+else
+{ <a href="javascript:login('show');">
+
+            <img src="~/Content/images/hotel4.jpg" width="100%" class="imgb1">
+        </a>
+}
+            }
+            <h3>The Chesterfield Sheraton</h3>
+        </div>
+        <div class="container-fluid" style="padding-bottom: 20px">
+            @{ if (Session["UserName"] != null)
+        {
+            using (Html.BeginForm("displayHotelDetails", "chesterfields", FormMethod.Post, new { }))
+            { <div style="display:none">@Html.TextBox("Location", "Agra")</div>
+            <button type="submit">
+                <img src="~/Content/images/hotel8.jpg" width="100%" class="imgb1">
+            </button>}
+}
+else
+{ <a href="javascript:login('show');">
+
+            <img src="~/Content/images/hotel8.jpg" width="100%" class="imgb1">
+        </a>
+}
+            }
+            <h3>The Chesterfield Mughal</h3>
+        </div>
+    </div>
+</div>
+<script>
+
+    function initMap() {
+
+                        var uluru = { lat: 13.0827, lng: 80.2707 };
+
+                    var map = new google.maps.Map(
+                        document.getElementById('map'), { zoom: 6, center: uluru });
+
+        var marker = new google.maps.Marker({ position: uluru, map: map });
+    }
+
+
+</script>
+<!--Load the API from the specified URL
+* The async attribute allows the browser to render the page while the API loads
+* The key parameter will contain your own API key (which is not needed for this tutorial)
+* The callback parameter executes the initMap() function
+-->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqN6YiFEkXkC7pJCjO5_Xa0hSue9DDKg8&callback=initMap">
+</script>
+
+
+@*@{ if (Session["User"] == null)
+        {
+
+        }
+        else
+        {
+
+            @Html.Action("location");
+
+        }
+
+    }*@
+
+
+<script type="text/javascript">
+
+    function disableBackButtonAllBrowsers() {
+
+        window.history.forward()
+
+    };
+
+
+
+
+    window.onpageshow = function (evts) {
+
+        if (evts.persisted) {
+
+            disableBackButtonAllBrowsers();
+
+        }
+
+    };
+
+
+
+    window.onunload = function () {
+
+        void (0)
+
+    };
+
+</script>
+

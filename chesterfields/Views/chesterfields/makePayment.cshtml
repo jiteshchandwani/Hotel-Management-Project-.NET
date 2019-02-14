@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "makePayment";
+}
+
+
+@if (Session["UserName"] == null)
+{
+    <script>
+        window.onload = function () {
+            {
+                window.location.href = "@Url.Action("index","Chesterfields")";
+            }
+        }
+    </script>
+}
+<style type="text/css">
+    .panel-primary > .panel-heading {
+        color: #9C7E47;
+        background-color: #000000;
+        border-color: #000000;
+    }
+
+    .panel-primary {
+        border-color: #000000;
+    }
+</style>
+
+
+<div class="container-fluid" style="padding:0px">
+    <img src="~/Content/images/black.jpg" width="100%" />
+</div>
+<div class="container">
+
+    <div class="panel panel-primary" style="margin-top: 120px; width:600px;margin-left: 230px;background-color">
+        <div class="panel-heading"><h3 style="text-align: center;">Payment form</h3></div>
+        <div class="panel-body" style="max-height: 10;">
+            <div class="row">
+                <aside class="col-sm-6">
+                    <article class="card">
+                        <div class="card-body p-5">
+                            <p>
+                                <img src="http://bootstrap-ecommerce.com/main/images/icons/pay-visa.png">
+                                <img src="http://bootstrap-ecommerce.com/main/images/icons/pay-mastercard.png">
+                                <img src="http://bootstrap-ecommerce.com/main/images/icons/pay-american-ex.png">
+                            </p>
+                            @using (Html.BeginForm("TqforBookingFromCard", "chesterfields", FormMethod.Post, new { }))
+
+                            {
+                            <div class="form-group">
+                               
+                                <span class=" fa fa-user"></span>
+                                <label for="username">Full name (on the card)</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+
+                                        <span class="input-group-text"></span>
+                                    </div>
+                                    @Html.TextBox("User_Name", null, new { @class = "form-control", @pattern = "^[a-zA-Z]+[a-zA-Z0-9]*$", @required = "required", @title = "Name must start with letters and can contain letters and numbers only.", @autocomplete = "off" })
+                                </div>
+                            </div>
+
+                                <div class="form-group">
+                                    <span class=" fa fa-credit-card"></span>
+                                    <label for="cardNumber">Card number</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"></span>
+                                        </div>
+                                        @Html.TextBox("Customer_Card_Number", null, new { @class = "form-control", @pattern = "^[0-9]{16}$", @required = "required", @title = "Enter Correct Card Number", @autocomplete = "off" })
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <span class=" fa fa-calendar"></span>
+                                            <label><span class="hidden-xs">Expiration</span> </label>
+                                            <div class="form-inline">
+                                                @Html.DropDownList("mm", new List<SelectListItem>
+{
+new SelectListItem {Text = "01 - January"},
+new SelectListItem {Text = "02 - February"},
+new SelectListItem {Text = "03 - March"},
+new SelectListItem {Text = "04 - April"},
+new SelectListItem {Text = "05 - May"},
+new SelectListItem {Text = "06 - June"},
+new SelectListItem {Text = "07 - July"},
+new SelectListItem {Text = "08 - August"},
+new SelectListItem {Text = "09 - September"},
+new SelectListItem {Text = "10 - October"},
+new SelectListItem {Text = "11 - November"},
+new SelectListItem {Text = "12 - December"},
+}, "MM", new { @class = "form-control form-group", @required = "required", @title = "Select Month" })
+
+                                                <span style="width:10%; text-align: center"> / </span>
+
+                                                @Html.DropDownList("yy", new List<SelectListItem>
+{
+new SelectListItem {Text = "2019"},
+new SelectListItem {Text = "2020"},
+new SelectListItem {Text = "2021"},
+new SelectListItem {Text = "2022"},
+new SelectListItem {Text = "2023"},
+new SelectListItem {Text = "2024"},
+new SelectListItem {Text = "2025"},
+new SelectListItem {Text = "2026"},
+new SelectListItem {Text = "2027"},
+new SelectListItem {Text = "2028"},
+new SelectListItem {Text = "2029"},
+new SelectListItem {Text = "2030"},
+}, "YY", new { @class = "form-control form-group", @required = "required", @title = "Select Year" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
+                                            @Html.TextBox("Customer_Cvv", null, new { @class = "form-control", @pattern = "^[0-9]{3}$", @required = "required", @title = "Enter Correct CVV.", @autocomplete = "off" })
+                                        </div>
+                                    </div>
+
+                                    <div style="display:none">@Html.TextBox("customerid", Session["CustomerId"], new { @class = "form-control" })</div>
+                                    <div style="display:none">@Html.TextBox("hotelid", (int)ViewBag.hid, new { @class = "form-control" })</div>
+                                    <div style="display:none">@Html.TextBox("roomId", (int)ViewBag.rid, new { @class = "form-control" })</div>
+                                    <div style="display:none">@Html.TextBox("checkin", (string)ViewBag.checkin, new { @class = "form-control" })</div>
+                                    <div style="display:none">@Html.TextBox("checkout", (string)ViewBag.checkout, new { @class = "form-control" })</div>
+                                    <div style="display:none">@Html.TextBox("noofrooms", (int)ViewBag.noofrooms, new { @class = "form-control" })</div>
+                                    <div style="display:none">@Html.TextBox("noofguests", (int)ViewBag.noofguests, new { @class = "form-control" })</div>
+                                    <div style="display:none">@Html.TextBox("Amount", (double)ViewBag.Amt, new { @class = "form-control" })</div>
+                                </div>
+                                <button class="subscribe btn btn-block" type="submit" style="background-color:black; color:#D2AC67;"> Confirm </button>
+                            }
+                        </div>
+                    </article>
+                </aside>
+
+            </div>
+        </div>
+    </div>
+</div>
+

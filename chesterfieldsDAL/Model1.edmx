@@ -1,0 +1,814 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ChesterfieldsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CustomerInfo">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="20" />
+          <Property Name="Date_of_Birth" Type="date" />
+          <Property Name="Gender" Type="varchar" MaxLength="7" />
+          <Property Name="Customer_Address" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="20" />
+          <Property Name="Pin_Code" Type="varchar" MaxLength="10" />
+          <Property Name="Country" Type="varchar" MaxLength="20" />
+          <Property Name="Phone_Number" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" />
+          <Property Name="Passwordd" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="HotelImage">
+          <Key>
+            <PropertyRef Name="Hotel_Img_Id" />
+          </Key>
+          <Property Name="Hotel_Img_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hotel_Id" Type="int" />
+          <Property Name="Img_Path" Type="varchar(max)" />
+          <Property Name="ImgPath2" Type="varchar(max)" />
+          <Property Name="ImgPath3" Type="varchar(max)" />
+          <Property Name="ImgPath4" Type="varchar(max)" />
+          <Property Name="ImgPath5" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="HotelInfo">
+          <Key>
+            <PropertyRef Name="Hotel_Id" />
+          </Key>
+          <Property Name="Hotel_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hotel_Name" Type="varchar" MaxLength="20" />
+          <Property Name="Hotel_Location" Type="varchar" MaxLength="20" />
+          <Property Name="Hotel_Email" Type="varchar" MaxLength="20" />
+          <Property Name="Hotel_Contact" Type="varchar" MaxLength="15" />
+          <Property Name="Hotel_Address" Type="varchar" MaxLength="100" />
+          <Property Name="About_Hotel" Type="nvarchar(max)" />
+          <Property Name="CustomerId" Type="int" />
+        </EntityType>
+        <EntityType Name="PaymentDetails">
+          <Key>
+            <PropertyRef Name="Payment_Id" />
+          </Key>
+          <Property Name="Payment_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Payment_Mode" Type="varchar" MaxLength="20" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Customer_Card_Number" Type="varchar" MaxLength="16" />
+          <Property Name="Customer_Cvv" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="Hotel_Id" Type="int" />
+          <Property Name="RoomTypeId" Type="int" />
+          <Property Name="RoomBookingId" Type="int" />
+          <Property Name="ExpiryDate" Type="varchar" MaxLength="10" />
+          <Property Name="NameonCard" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="RoomBooking">
+          <Key>
+            <PropertyRef Name="RoomBookingId" />
+          </Key>
+          <Property Name="RoomBookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomType" Type="varchar" MaxLength="20" />
+          <Property Name="CheckIn" Type="date" />
+          <Property Name="CheckOut" Type="date" />
+          <Property Name="No_of_Guests" Type="int" />
+          <Property Name="No_of_Rooms" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="Hotel_Id" Type="int" />
+          <Property Name="RoomTypeId" Type="int" />
+        </EntityType>
+        <EntityType Name="RoomDetail">
+          <Key>
+            <PropertyRef Name="RoomTypeId" />
+          </Key>
+          <Property Name="RoomTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomType" Type="varchar" MaxLength="20" />
+          <Property Name="Number_of_Rooms" Type="int" />
+          <Property Name="Available_Rooms" Type="int" />
+          <Property Name="Floor_No" Type="int" />
+          <Property Name="Occupancy" Type="int" />
+          <Property Name="Price" Type="float" />
+          <Property Name="About_Room" Type="varchar(max)" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="Hotel_Id" Type="int" />
+          <Property Name="Room_Image_Path" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="RoomImage">
+          <Key>
+            <PropertyRef Name="Room_Img_Id" />
+          </Key>
+          <Property Name="Room_Img_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomTypeId" Type="int" />
+          <Property Name="Img_Path1" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="StayDetails">
+          <Key>
+            <PropertyRef Name="StayDetailsId" />
+          </Key>
+          <Property Name="Hotel_Name" Type="varchar" MaxLength="10" />
+          <Property Name="Hotel_Address" Type="varchar" MaxLength="30" />
+          <Property Name="Hotel_Email" Type="varchar" MaxLength="20" />
+          <Property Name="Hotel_Contact" Type="varchar" MaxLength="15" />
+          <Property Name="RoomType" Type="varchar" MaxLength="20" />
+          <Property Name="Price" Type="float" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="20" />
+          <Property Name="Customer_Address" Type="varchar" MaxLength="50" />
+          <Property Name="Phone_Number" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="StayDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__HotelImag__Hotel__398D8EEE">
+          <End Role="HotelInfo" Type="Self.HotelInfo" Multiplicity="0..1" />
+          <End Role="HotelImage" Type="Self.HotelImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelInfo">
+              <PropertyRef Name="Hotel_Id" />
+            </Principal>
+            <Dependent Role="HotelImage">
+              <PropertyRef Name="Hotel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HotelInfo__Custo__145C0A3F">
+          <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="0..1" />
+          <End Role="HotelInfo" Type="Self.HotelInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerInfo">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="HotelInfo">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__Custo__1FCDBCEB">
+          <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerInfo">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__Hotel__20C1E124">
+          <End Role="HotelInfo" Type="Self.HotelInfo" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelInfo">
+              <PropertyRef Name="Hotel_Id" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="Hotel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__RoomB__22AA2996">
+          <End Role="RoomBooking" Type="Self.RoomBooking" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomBooking">
+              <PropertyRef Name="RoomBookingId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="RoomBookingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__RoomT__21B6055D">
+          <End Role="RoomDetail" Type="Self.RoomDetail" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomDetail">
+              <PropertyRef Name="RoomTypeId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="RoomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomBooki__Custo__1B0907CE">
+          <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="0..1" />
+          <End Role="RoomBooking" Type="Self.RoomBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerInfo">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="RoomBooking">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomBooki__Hotel__1BFD2C07">
+          <End Role="HotelInfo" Type="Self.HotelInfo" Multiplicity="0..1" />
+          <End Role="RoomBooking" Type="Self.RoomBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelInfo">
+              <PropertyRef Name="Hotel_Id" />
+            </Principal>
+            <Dependent Role="RoomBooking">
+              <PropertyRef Name="Hotel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomBooki__RoomT__1CF15040">
+          <End Role="RoomDetail" Type="Self.RoomDetail" Multiplicity="0..1" />
+          <End Role="RoomBooking" Type="Self.RoomBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomDetail">
+              <PropertyRef Name="RoomTypeId" />
+            </Principal>
+            <Dependent Role="RoomBooking">
+              <PropertyRef Name="RoomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomDetai__Custo__173876EA">
+          <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="0..1" />
+          <End Role="RoomDetail" Type="Self.RoomDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerInfo">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="RoomDetail">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomDetai__Hotel__182C9B23">
+          <End Role="HotelInfo" Type="Self.HotelInfo" Multiplicity="0..1" />
+          <End Role="RoomDetail" Type="Self.RoomDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelInfo">
+              <PropertyRef Name="Hotel_Id" />
+            </Principal>
+            <Dependent Role="RoomDetail">
+              <PropertyRef Name="Hotel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomImage__RoomT__29572725">
+          <End Role="RoomDetail" Type="Self.RoomDetail" Multiplicity="0..1" />
+          <End Role="RoomImage" Type="Self.RoomImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomDetail">
+              <PropertyRef Name="RoomTypeId" />
+            </Principal>
+            <Dependent Role="RoomImage">
+              <PropertyRef Name="RoomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ChesterfieldsModelStoreContainer">
+          <EntitySet Name="CustomerInfo" EntityType="Self.CustomerInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelImage" EntityType="Self.HotelImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelInfo" EntityType="Self.HotelInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomBooking" EntityType="Self.RoomBooking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomDetail" EntityType="Self.RoomDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoomImage" EntityType="Self.RoomImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StayDetails" EntityType="Self.StayDetails" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__HotelImag__Hotel__398D8EEE" Association="Self.FK__HotelImag__Hotel__398D8EEE">
+            <End Role="HotelInfo" EntitySet="HotelInfo" />
+            <End Role="HotelImage" EntitySet="HotelImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HotelInfo__Custo__145C0A3F" Association="Self.FK__HotelInfo__Custo__145C0A3F">
+            <End Role="CustomerInfo" EntitySet="CustomerInfo" />
+            <End Role="HotelInfo" EntitySet="HotelInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__Custo__1FCDBCEB" Association="Self.FK__PaymentDe__Custo__1FCDBCEB">
+            <End Role="CustomerInfo" EntitySet="CustomerInfo" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__Hotel__20C1E124" Association="Self.FK__PaymentDe__Hotel__20C1E124">
+            <End Role="HotelInfo" EntitySet="HotelInfo" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__RoomB__22AA2996" Association="Self.FK__PaymentDe__RoomB__22AA2996">
+            <End Role="RoomBooking" EntitySet="RoomBooking" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__RoomT__21B6055D" Association="Self.FK__PaymentDe__RoomT__21B6055D">
+            <End Role="RoomDetail" EntitySet="RoomDetail" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomBooki__Custo__1B0907CE" Association="Self.FK__RoomBooki__Custo__1B0907CE">
+            <End Role="CustomerInfo" EntitySet="CustomerInfo" />
+            <End Role="RoomBooking" EntitySet="RoomBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomBooki__Hotel__1BFD2C07" Association="Self.FK__RoomBooki__Hotel__1BFD2C07">
+            <End Role="HotelInfo" EntitySet="HotelInfo" />
+            <End Role="RoomBooking" EntitySet="RoomBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomBooki__RoomT__1CF15040" Association="Self.FK__RoomBooki__RoomT__1CF15040">
+            <End Role="RoomDetail" EntitySet="RoomDetail" />
+            <End Role="RoomBooking" EntitySet="RoomBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomDetai__Custo__173876EA" Association="Self.FK__RoomDetai__Custo__173876EA">
+            <End Role="CustomerInfo" EntitySet="CustomerInfo" />
+            <End Role="RoomDetail" EntitySet="RoomDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomDetai__Hotel__182C9B23" Association="Self.FK__RoomDetai__Hotel__182C9B23">
+            <End Role="HotelInfo" EntitySet="HotelInfo" />
+            <End Role="RoomDetail" EntitySet="RoomDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomImage__RoomT__29572725" Association="Self.FK__RoomImage__RoomT__29572725">
+            <End Role="RoomDetail" EntitySet="RoomDetail" />
+            <End Role="RoomImage" EntitySet="RoomImage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ChesterfieldsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CustomerInfo">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Date_of_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Pin_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Phone_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Passwordd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HotelInfoes" Relationship="Self.FK__HotelInfo__Custo__145C0A3F" FromRole="CustomerInfo" ToRole="HotelInfo" />
+          <NavigationProperty Name="PaymentDetails" Relationship="Self.FK__PaymentDe__Custo__1FCDBCEB" FromRole="CustomerInfo" ToRole="PaymentDetails" />
+          <NavigationProperty Name="RoomBookings" Relationship="Self.FK__RoomBooki__Custo__1B0907CE" FromRole="CustomerInfo" ToRole="RoomBooking" />
+          <NavigationProperty Name="RoomDetails" Relationship="Self.FK__RoomDetai__Custo__173876EA" FromRole="CustomerInfo" ToRole="RoomDetail" />
+        </EntityType>
+        <EntityType Name="HotelImage">
+          <Key>
+            <PropertyRef Name="Hotel_Img_Id" />
+          </Key>
+          <Property Name="Hotel_Img_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hotel_Id" Type="Int32" />
+          <Property Name="Img_Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgPath2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgPath3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgPath4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImgPath5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HotelInfo" Relationship="Self.FK__HotelImag__Hotel__398D8EEE" FromRole="HotelImage" ToRole="HotelInfo" />
+        </EntityType>
+        <EntityType Name="HotelInfo">
+          <Key>
+            <PropertyRef Name="Hotel_Id" />
+          </Key>
+          <Property Name="Hotel_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hotel_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel_Location" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel_Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel_Contact" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="About_Hotel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerId" Type="Int32" />
+          <NavigationProperty Name="CustomerInfo" Relationship="Self.FK__HotelInfo__Custo__145C0A3F" FromRole="HotelInfo" ToRole="CustomerInfo" />
+          <NavigationProperty Name="HotelImages" Relationship="Self.FK__HotelImag__Hotel__398D8EEE" FromRole="HotelInfo" ToRole="HotelImage" />
+          <NavigationProperty Name="PaymentDetails" Relationship="Self.FK__PaymentDe__Hotel__20C1E124" FromRole="HotelInfo" ToRole="PaymentDetails" />
+          <NavigationProperty Name="RoomBookings" Relationship="Self.FK__RoomBooki__Hotel__1BFD2C07" FromRole="HotelInfo" ToRole="RoomBooking" />
+          <NavigationProperty Name="RoomDetails" Relationship="Self.FK__RoomDetai__Hotel__182C9B23" FromRole="HotelInfo" ToRole="RoomDetail" />
+        </EntityType>
+        <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="Payment_Id" />
+          </Key>
+          <Property Name="Payment_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Payment_Mode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Customer_Card_Number" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Cvv" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="Hotel_Id" Type="Int32" />
+          <Property Name="RoomTypeId" Type="Int32" />
+          <Property Name="RoomBookingId" Type="Int32" />
+          <Property Name="ExpiryDate" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NameonCard" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CustomerInfo" Relationship="Self.FK__PaymentDe__Custo__1FCDBCEB" FromRole="PaymentDetails" ToRole="CustomerInfo" />
+          <NavigationProperty Name="HotelInfo" Relationship="Self.FK__PaymentDe__Hotel__20C1E124" FromRole="PaymentDetails" ToRole="HotelInfo" />
+          <NavigationProperty Name="RoomBooking" Relationship="Self.FK__PaymentDe__RoomB__22AA2996" FromRole="PaymentDetails" ToRole="RoomBooking" />
+          <NavigationProperty Name="RoomDetail" Relationship="Self.FK__PaymentDe__RoomT__21B6055D" FromRole="PaymentDetails" ToRole="RoomDetail" />
+        </EntityType>
+        <EntityType Name="RoomBooking">
+          <Key>
+            <PropertyRef Name="RoomBookingId" />
+          </Key>
+          <Property Name="RoomBookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CheckIn" Type="DateTime" Precision="0" />
+          <Property Name="CheckOut" Type="DateTime" Precision="0" />
+          <Property Name="No_of_Guests" Type="Int32" />
+          <Property Name="No_of_Rooms" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="Hotel_Id" Type="Int32" />
+          <Property Name="RoomTypeId" Type="Int32" />
+          <NavigationProperty Name="CustomerInfo" Relationship="Self.FK__RoomBooki__Custo__1B0907CE" FromRole="RoomBooking" ToRole="CustomerInfo" />
+          <NavigationProperty Name="HotelInfo" Relationship="Self.FK__RoomBooki__Hotel__1BFD2C07" FromRole="RoomBooking" ToRole="HotelInfo" />
+          <NavigationProperty Name="PaymentDetails" Relationship="Self.FK__PaymentDe__RoomB__22AA2996" FromRole="RoomBooking" ToRole="PaymentDetails" />
+          <NavigationProperty Name="RoomDetail" Relationship="Self.FK__RoomBooki__RoomT__1CF15040" FromRole="RoomBooking" ToRole="RoomDetail" />
+        </EntityType>
+        <EntityType Name="RoomDetail">
+          <Key>
+            <PropertyRef Name="RoomTypeId" />
+          </Key>
+          <Property Name="RoomTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Number_of_Rooms" Type="Int32" />
+          <Property Name="Available_Rooms" Type="Int32" />
+          <Property Name="Floor_No" Type="Int32" />
+          <Property Name="Occupancy" Type="Int32" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="About_Room" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="Hotel_Id" Type="Int32" />
+          <Property Name="Room_Image_Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CustomerInfo" Relationship="Self.FK__RoomDetai__Custo__173876EA" FromRole="RoomDetail" ToRole="CustomerInfo" />
+          <NavigationProperty Name="HotelInfo" Relationship="Self.FK__RoomDetai__Hotel__182C9B23" FromRole="RoomDetail" ToRole="HotelInfo" />
+          <NavigationProperty Name="PaymentDetails" Relationship="Self.FK__PaymentDe__RoomT__21B6055D" FromRole="RoomDetail" ToRole="PaymentDetails" />
+          <NavigationProperty Name="RoomBookings" Relationship="Self.FK__RoomBooki__RoomT__1CF15040" FromRole="RoomDetail" ToRole="RoomBooking" />
+          <NavigationProperty Name="RoomImages" Relationship="Self.FK__RoomImage__RoomT__29572725" FromRole="RoomDetail" ToRole="RoomImage" />
+        </EntityType>
+        <EntityType Name="RoomImage">
+          <Key>
+            <PropertyRef Name="Room_Img_Id" />
+          </Key>
+          <Property Name="Room_Img_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomTypeId" Type="Int32" />
+          <Property Name="Img_Path1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RoomDetail" Relationship="Self.FK__RoomImage__RoomT__29572725" FromRole="RoomImage" ToRole="RoomDetail" />
+        </EntityType>
+        <EntityType Name="StayDetail">
+          <Key>
+            <PropertyRef Name="StayDetailsId" />
+          </Key>
+          <Property Name="Hotel_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel_Address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel_Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Hotel_Contact" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="RoomType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="CustomerName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StayDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="FK__HotelInfo__Custo__145C0A3F">
+          <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="0..1" />
+          <End Role="HotelInfo" Type="Self.HotelInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerInfo">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="HotelInfo">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__Custo__1FCDBCEB">
+          <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerInfo">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomBooki__Custo__1B0907CE">
+          <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="0..1" />
+          <End Role="RoomBooking" Type="Self.RoomBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerInfo">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="RoomBooking">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomDetai__Custo__173876EA">
+          <End Role="CustomerInfo" Type="Self.CustomerInfo" Multiplicity="0..1" />
+          <End Role="RoomDetail" Type="Self.RoomDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerInfo">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="RoomDetail">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HotelImag__Hotel__398D8EEE">
+          <End Role="HotelInfo" Type="Self.HotelInfo" Multiplicity="0..1" />
+          <End Role="HotelImage" Type="Self.HotelImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelInfo">
+              <PropertyRef Name="Hotel_Id" />
+            </Principal>
+            <Dependent Role="HotelImage">
+              <PropertyRef Name="Hotel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__Hotel__20C1E124">
+          <End Role="HotelInfo" Type="Self.HotelInfo" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelInfo">
+              <PropertyRef Name="Hotel_Id" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="Hotel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomBooki__Hotel__1BFD2C07">
+          <End Role="HotelInfo" Type="Self.HotelInfo" Multiplicity="0..1" />
+          <End Role="RoomBooking" Type="Self.RoomBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelInfo">
+              <PropertyRef Name="Hotel_Id" />
+            </Principal>
+            <Dependent Role="RoomBooking">
+              <PropertyRef Name="Hotel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomDetai__Hotel__182C9B23">
+          <End Role="HotelInfo" Type="Self.HotelInfo" Multiplicity="0..1" />
+          <End Role="RoomDetail" Type="Self.RoomDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelInfo">
+              <PropertyRef Name="Hotel_Id" />
+            </Principal>
+            <Dependent Role="RoomDetail">
+              <PropertyRef Name="Hotel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__RoomB__22AA2996">
+          <End Role="RoomBooking" Type="Self.RoomBooking" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomBooking">
+              <PropertyRef Name="RoomBookingId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="RoomBookingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__RoomT__21B6055D">
+          <End Role="RoomDetail" Type="Self.RoomDetail" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomDetail">
+              <PropertyRef Name="RoomTypeId" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="RoomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomBooki__RoomT__1CF15040">
+          <End Role="RoomDetail" Type="Self.RoomDetail" Multiplicity="0..1" />
+          <End Role="RoomBooking" Type="Self.RoomBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomDetail">
+              <PropertyRef Name="RoomTypeId" />
+            </Principal>
+            <Dependent Role="RoomBooking">
+              <PropertyRef Name="RoomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RoomImage__RoomT__29572725">
+          <End Role="RoomDetail" Type="Self.RoomDetail" Multiplicity="0..1" />
+          <End Role="RoomImage" Type="Self.RoomImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomDetail">
+              <PropertyRef Name="RoomTypeId" />
+            </Principal>
+            <Dependent Role="RoomImage">
+              <PropertyRef Name="RoomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ChesterfieldsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CustomerInfoes" EntityType="Self.CustomerInfo" />
+          <EntitySet Name="HotelImages" EntityType="Self.HotelImage" />
+          <EntitySet Name="HotelInfoes" EntityType="Self.HotelInfo" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetail" />
+          <EntitySet Name="RoomBookings" EntityType="Self.RoomBooking" />
+          <EntitySet Name="RoomDetails" EntityType="Self.RoomDetail" />
+          <EntitySet Name="RoomImages" EntityType="Self.RoomImage" />
+          <EntitySet Name="StayDetails" EntityType="Self.StayDetail" />
+          <AssociationSet Name="FK__HotelInfo__Custo__145C0A3F" Association="Self.FK__HotelInfo__Custo__145C0A3F">
+            <End Role="CustomerInfo" EntitySet="CustomerInfoes" />
+            <End Role="HotelInfo" EntitySet="HotelInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__Custo__1FCDBCEB" Association="Self.FK__PaymentDe__Custo__1FCDBCEB">
+            <End Role="CustomerInfo" EntitySet="CustomerInfoes" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomBooki__Custo__1B0907CE" Association="Self.FK__RoomBooki__Custo__1B0907CE">
+            <End Role="CustomerInfo" EntitySet="CustomerInfoes" />
+            <End Role="RoomBooking" EntitySet="RoomBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomDetai__Custo__173876EA" Association="Self.FK__RoomDetai__Custo__173876EA">
+            <End Role="CustomerInfo" EntitySet="CustomerInfoes" />
+            <End Role="RoomDetail" EntitySet="RoomDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HotelImag__Hotel__398D8EEE" Association="Self.FK__HotelImag__Hotel__398D8EEE">
+            <End Role="HotelInfo" EntitySet="HotelInfoes" />
+            <End Role="HotelImage" EntitySet="HotelImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__Hotel__20C1E124" Association="Self.FK__PaymentDe__Hotel__20C1E124">
+            <End Role="HotelInfo" EntitySet="HotelInfoes" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomBooki__Hotel__1BFD2C07" Association="Self.FK__RoomBooki__Hotel__1BFD2C07">
+            <End Role="HotelInfo" EntitySet="HotelInfoes" />
+            <End Role="RoomBooking" EntitySet="RoomBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomDetai__Hotel__182C9B23" Association="Self.FK__RoomDetai__Hotel__182C9B23">
+            <End Role="HotelInfo" EntitySet="HotelInfoes" />
+            <End Role="RoomDetail" EntitySet="RoomDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__RoomB__22AA2996" Association="Self.FK__PaymentDe__RoomB__22AA2996">
+            <End Role="RoomBooking" EntitySet="RoomBookings" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__RoomT__21B6055D" Association="Self.FK__PaymentDe__RoomT__21B6055D">
+            <End Role="RoomDetail" EntitySet="RoomDetails" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomBooki__RoomT__1CF15040" Association="Self.FK__RoomBooki__RoomT__1CF15040">
+            <End Role="RoomDetail" EntitySet="RoomDetails" />
+            <End Role="RoomBooking" EntitySet="RoomBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RoomImage__RoomT__29572725" Association="Self.FK__RoomImage__RoomT__29572725">
+            <End Role="RoomDetail" EntitySet="RoomDetails" />
+            <End Role="RoomImage" EntitySet="RoomImages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ChesterfieldsModelStoreContainer" CdmEntityContainer="ChesterfieldsEntities">
+          <EntitySetMapping Name="CustomerInfoes">
+            <EntityTypeMapping TypeName="ChesterfieldsModel.CustomerInfo">
+              <MappingFragment StoreEntitySet="CustomerInfo">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Date_of_Birth" ColumnName="Date_of_Birth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Customer_Address" ColumnName="Customer_Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Pin_Code" ColumnName="Pin_Code" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Passwordd" ColumnName="Passwordd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelImages">
+            <EntityTypeMapping TypeName="ChesterfieldsModel.HotelImage">
+              <MappingFragment StoreEntitySet="HotelImage">
+                <ScalarProperty Name="Hotel_Img_Id" ColumnName="Hotel_Img_Id" />
+                <ScalarProperty Name="Hotel_Id" ColumnName="Hotel_Id" />
+                <ScalarProperty Name="Img_Path" ColumnName="Img_Path" />
+                <ScalarProperty Name="ImgPath2" ColumnName="ImgPath2" />
+                <ScalarProperty Name="ImgPath3" ColumnName="ImgPath3" />
+                <ScalarProperty Name="ImgPath4" ColumnName="ImgPath4" />
+                <ScalarProperty Name="ImgPath5" ColumnName="ImgPath5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelInfoes">
+            <EntityTypeMapping TypeName="ChesterfieldsModel.HotelInfo">
+              <MappingFragment StoreEntitySet="HotelInfo">
+                <ScalarProperty Name="Hotel_Id" ColumnName="Hotel_Id" />
+                <ScalarProperty Name="Hotel_Name" ColumnName="Hotel_Name" />
+                <ScalarProperty Name="Hotel_Location" ColumnName="Hotel_Location" />
+                <ScalarProperty Name="Hotel_Email" ColumnName="Hotel_Email" />
+                <ScalarProperty Name="Hotel_Contact" ColumnName="Hotel_Contact" />
+                <ScalarProperty Name="Hotel_Address" ColumnName="Hotel_Address" />
+                <ScalarProperty Name="About_Hotel" ColumnName="About_Hotel" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDetails">
+            <EntityTypeMapping TypeName="ChesterfieldsModel.PaymentDetail">
+              <MappingFragment StoreEntitySet="PaymentDetails">
+                <ScalarProperty Name="Payment_Id" ColumnName="Payment_Id" />
+                <ScalarProperty Name="Payment_Mode" ColumnName="Payment_Mode" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Customer_Card_Number" ColumnName="Customer_Card_Number" />
+                <ScalarProperty Name="Customer_Cvv" ColumnName="Customer_Cvv" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Hotel_Id" ColumnName="Hotel_Id" />
+                <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+                <ScalarProperty Name="RoomBookingId" ColumnName="RoomBookingId" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="NameonCard" ColumnName="NameonCard" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomBookings">
+            <EntityTypeMapping TypeName="ChesterfieldsModel.RoomBooking">
+              <MappingFragment StoreEntitySet="RoomBooking">
+                <ScalarProperty Name="RoomBookingId" ColumnName="RoomBookingId" />
+                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+                <ScalarProperty Name="CheckIn" ColumnName="CheckIn" />
+                <ScalarProperty Name="CheckOut" ColumnName="CheckOut" />
+                <ScalarProperty Name="No_of_Guests" ColumnName="No_of_Guests" />
+                <ScalarProperty Name="No_of_Rooms" ColumnName="No_of_Rooms" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Hotel_Id" ColumnName="Hotel_Id" />
+                <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomDetails">
+            <EntityTypeMapping TypeName="ChesterfieldsModel.RoomDetail">
+              <MappingFragment StoreEntitySet="RoomDetail">
+                <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+                <ScalarProperty Name="Number_of_Rooms" ColumnName="Number_of_Rooms" />
+                <ScalarProperty Name="Available_Rooms" ColumnName="Available_Rooms" />
+                <ScalarProperty Name="Floor_No" ColumnName="Floor_No" />
+                <ScalarProperty Name="Occupancy" ColumnName="Occupancy" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="About_Room" ColumnName="About_Room" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Hotel_Id" ColumnName="Hotel_Id" />
+                <ScalarProperty Name="Room_Image_Path" ColumnName="Room_Image_Path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomImages">
+            <EntityTypeMapping TypeName="ChesterfieldsModel.RoomImage">
+              <MappingFragment StoreEntitySet="RoomImage">
+                <ScalarProperty Name="Room_Img_Id" ColumnName="Room_Img_Id" />
+                <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+                <ScalarProperty Name="Img_Path1" ColumnName="Img_Path1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StayDetails">
+            <EntityTypeMapping TypeName="ChesterfieldsModel.StayDetail">
+              <MappingFragment StoreEntitySet="StayDetails">
+                <ScalarProperty Name="Hotel_Name" ColumnName="Hotel_Name" />
+                <ScalarProperty Name="Hotel_Address" ColumnName="Hotel_Address" />
+                <ScalarProperty Name="Hotel_Email" ColumnName="Hotel_Email" />
+                <ScalarProperty Name="Hotel_Contact" ColumnName="Hotel_Contact" />
+                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Customer_Address" ColumnName="Customer_Address" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="StayDetailsId" ColumnName="StayDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

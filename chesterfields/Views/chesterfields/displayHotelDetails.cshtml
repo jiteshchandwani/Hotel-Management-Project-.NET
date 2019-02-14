@@ -1,0 +1,418 @@
+﻿@model chesterfields.Models.HotelDetails
+@{
+    ViewBag.Title = "displayHotelDetails";
+}
+@if (Session["UserName"] == null)
+{
+    <script>
+        window.onload = function () {
+            {
+                window.location.href = "@Url.Action("index", "Chesterfields")";
+            }
+        }
+    </script>
+}
+
+<div class="container-fluid" style="padding:0px">
+
+    <video width="100%" autoplay muted loop style="position: relative;">
+        <source src="@Html.DisplayFor(Model => Model.hotelimageinfo.Img_Path)" type="video/mp4" />
+    </video>
+
+
+</div>
+<div class="container" style="margin-top:-400px !important; color:white; display: flex; position:absolute;left:25%"><p style="font-size:60px">The Chesterfield @Html.DisplayFor(Model => Model.hotelInfo.Hotel_Name)</p></div>
+
+<div class="container" style="padding:30px; line-height: 1.7em; font-size:16px; background-color:#e8e1d7; margin-bottom:60px">
+    <div class="col-sm-6" style="margin-top:30px;padding-right:3px">
+
+        <img src="@Html.DisplayFor(Model => Model.hotelimageinfo.ImgPath2)" width="100%" />
+    </div>
+    <div class="col-sm-6">
+        <h1>
+            @Html.DisplayFor(Model => Model.hotelInfo.Hotel_Name)
+        </h1>
+        <p align="justify" style="font-size:18px">@Html.DisplayFor(Model => Model.hotelInfo.About_Hotel)</p>
+    </div>
+</div>
+<style>
+    .flex-container {
+        margin-top: 10px;
+        height: 500px;
+        width: 100%;
+        display: -webkit-flex;
+        /* Safari */
+        display: flex;
+        overflow: hidden;
+    }
+
+    @@media screen and (max-width: 768px) {
+        .flex-container {
+            flex-direction: column;
+        }
+    }
+
+    .flex-title {
+        color: #f1f1f1;
+        position: relative;
+        font-size: 36px;
+        margin: auto;
+        text-align: center;
+        transform: rotate(90deg);
+        top: 15%;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        -ms-transition: all 500ms ease;
+        -o-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    @@media screen and (max-width: 768px) {
+
+        .flex-title {
+            transform: rotate(0deg) !important;
+        }
+    }
+
+    .flex-about {
+        opacity: 0;
+        color: #f1f1f1;
+        position: relative;
+        width: 70%;
+        font-size: 20px;
+        padding: 5%;
+        top: 20%;
+        line-height: 1.3;
+        margin: auto;
+        text-align: left;
+        transform: rotate(0deg);
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        -ms-transition: all 500ms ease;
+        -o-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    @@media screen and (max-width: 768px) {
+
+        .flex-about {
+            padding: 0%;
+            border: 0px solid #f1f1f1;
+        }
+    }
+
+    .flex-slide {
+        -webkit-flex: 1;
+        /* Safari 6.1+ */
+        -ms-flex: 1;
+        /* IE 10 */
+        flex: 1;
+        cursor: pointer;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        -ms-transition: all 500ms ease;
+        -o-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    @@media screen and (max-width: 768px) {
+
+        .flex-slide {
+            overflow: auto;
+            overflow-x: hidden;
+        }
+    }
+
+    @@media screen and (max-width: 768px) {
+
+        .flex-slide p {
+            font-size: 2em;
+        }
+    }
+
+    @@media screen and (max-width: 768px) {
+
+        .flex-slide ul li {
+            font-size: 2em;
+        }
+    }
+
+    .flex-slide:hover {
+        -webkit-flex-grow: 3;
+        flex-grow: 3;
+    }
+
+    .home {
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('../../Content/images/kwicks1.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+    }
+
+    @@media screen and (min-width: 768px) {
+
+        .home {
+            -moz-animation: aboutFlexSlide;
+            -moz-animation-duration: 3s;
+            -moz-animation-iteration-count: 1;
+            -moz-animation-delay: 0s;
+            -webkit-animation: aboutFlexSlide;
+            -webkit-animation-duration: 3s;
+            -webkit-animation-iteration-count: 1;
+            -webkit-animation-delay: 0s;
+            animation: aboutFlexSlide;
+            animation-duration: 3s;
+            animation-iteration-count: 1;
+            animation-delay: 0s;
+        }
+    }
+
+    @@keyframes aboutFlexSlide {
+        0% {
+            -webkit-flex-grow: 1;
+            flex-grow: 1;
+        }
+
+        50% {
+            -webkit-flex-grow: 3;
+            flex-grow: 3;
+        }
+
+        100% {
+            -webkit-flex-grow: 1;
+            flex-grow: 1;
+        }
+    }
+
+    @@media screen and (min-width: 768px) {
+
+        .flex-title-home {
+            transform: rotate(90deg);
+            top: 15%;
+            -moz-animation: homeFlextitle;
+            -moz-animation-duration: 3s;
+            -moz-animation-iteration-count: 1;
+            -moz-animation-delay: 0s;
+            -webkit-animation: homeFlextitle;
+            -webkit-animation-duration: 3s;
+            -webkit-animation-iteration-count: 1;
+            -webkit-animation-delay: 0s;
+            animation: homeFlextitle;
+            animation-duration: 3s;
+            animation-iteration-count: 1;
+            animation-delay: 0s;
+        }
+    }
+
+    @@keyframes homeFlextitle {
+        0% {
+            transform: rotate(90deg);
+            top: 15%;
+        }
+
+        50% {
+            transform: rotate(0deg);
+            top: 15%;
+        }
+
+        100% {
+            transform: rotate(90deg);
+            top: 15%;
+        }
+    }
+
+    .flex-about-home {
+        opacity: 0;
+    }
+
+    @@media screen and (min-width: 768px) {
+
+        .flex-about-home {
+            -moz-animation: flexAboutHome;
+            -moz-animation-duration: 3s;
+            -moz-animation-iteration-count: 1;
+            -moz-animation-delay: 0s;
+            -webkit-animation: flexAboutHome;
+            -webkit-animation-duration: 3s;
+            -webkit-animation-iteration-count: 1;
+            -webkit-animation-delay: 0s;
+            animation: flexAboutHome;
+            animation-duration: 3s;
+            animation-iteration-count: 1;
+            animation-delay: 0s;
+        }
+    }
+
+    @@keyframes flexAboutHome {
+        0% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    .about {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('../../Content/images/kwicks2.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    textarea {
+        width: 100%;
+    }
+
+    .contact {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('../../Content/images/kwicks4.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+    }
+
+    .work {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('../../Content/images/kwicks3.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+    }
+</style>
+
+
+<center><p style="padding-bottom:20px; font-size:60px">Our Services</p></center>
+<div class="flex-container">
+    <div class="flex-slide home">
+        <div class="flex-title flex-title-home">Pure Bliss</div>
+        <div class="flex-about flex-about-home">
+            <p>Indulge in a rejuvinating wellness experience that will take your body on a sensory journey into heaven of tranquility. Journey through a land of ancient customs and rituals and recapture the spiritual and medical legacies of India. </p>
+        </div>
+    </div>
+    <div class="flex-slide about">
+        <div class="flex-title" style="margin-top: 10px;">Gymnasium</div>
+        <div class="flex-about">
+            <p>Hotels’ exhibits a fully equipped fitness centre offering a range of state-of-the-art  technology including various Technogym cardio machines and a TRX Suspension trainer. </p>
+        </div>
+    </div>
+    <div class="flex-slide work">
+        <div class="flex-title">Restro Bar</div>
+        <div class="flex-about">
+            <p>Surrender to the spell of oasis of tranquillity at this elegant bar, luxury and refinement - all amalgamated to display a winning combination. Sit back and enjoy the finest collection of international spirits and sumptuous appetisers</p>
+        </div>
+    </div>
+    <div class="flex-slide contact">
+        <div class="flex-title">Funville</div>
+        <div class="flex-about">
+            <p>Multi contoured frame is augmented by Georgian styled hand carved aprons, plaques, and ropemoldings. The over sized hand carved ball and claw legs finish the Baroque style and design of this highlysought after Golden West pool table.</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.waitforimages/2.2.0/jquery.waitforimages.min.js"></script>
+<script>
+    (function () {
+        $('.flex-container').waitForImages(function () {
+            $('.spinner').fadeOut();
+        }, $.noop, true);
+
+        $(".flex-slide").each(function () {
+            $(this).hover(function () {
+                $(this).find('.flex-title').css({
+                    transform: 'rotate(0deg)',
+                    top: '10%'
+                });
+                $(this).find('.flex-about').css({
+                    opacity: '1'
+                });
+            }, function () {
+                $(this).find('.flex-title').css({
+                    transform: 'rotate(90deg)',
+                    top: '15%'
+                });
+                $(this).find('.flex-about').css({
+                    opacity: '0'
+                });
+            })
+        });
+    })();
+</script>
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36251023-1']);
+    _gaq.push(['_setDomainName', 'jqueryscript.net']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+
+<div class="container" style="padding:20px; border:2px;margin-top:100px ">
+
+    <div class="col-sm-5" style=" font-size:24px;font-family:Raleway; color:#EAT1D7; padding-top:70px">
+        <i class="fa fa-phone" style="line-height: 2.5em; "> Contact:@Html.DisplayFor(Model => Model.hotelInfo.Hotel_Contact)</i><br />
+        <i class="fa fa-envelope" style="line-height: 2.5em;">Email: @Html.DisplayFor(Model => Model.hotelInfo.Hotel_Email)</i><br />
+        <i class="fa fa-building-o" style="line-height: 2.5em; "> Address:  @Html.DisplayFor(Model => Model.hotelInfo.Hotel_Address) </i>
+
+    </div>
+
+    <div class="col-sm-7">
+
+        <!-- Wrapper for slides -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+
+            <div class="carousel-inner" style=" width:100%">
+                <div class="item active">
+                    <img src="@Html.DisplayFor(Model => Model.hotelimageinfo.ImgPath3)" alt="hotel-1" style="width:100%;">
+                </div>
+
+                <div class="item">
+                    <img src="@Html.DisplayFor(Model => Model.hotelimageinfo.ImgPath4)" alt="hotel-1" style="width:100%;">
+                </div>
+
+                <div class="item">
+                    <img src="@Html.DisplayFor(Model => Model.hotelimageinfo.ImgPath5)" alt="hotel-1" style="width:100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="padding:30px;text-align:right">
+    @using (Html.BeginForm("displayRoomDetails", "chesterfields", FormMethod.Post, new { }))
+    {
+        <div style="visibility:hidden">@Html.TextBox("HotelId", @Html.DisplayFor(Model => Model.hotelInfo.Hotel_Id), new { @class = "form-control" })</div>
+        <button type="submit" value="Find Hotels" class="btn" style="color:#D2AC67;text-align:right; font-size:25px;background-color:#000000">Select Room</button>
+    }
+
+
+
+
+</div>
+
+
+

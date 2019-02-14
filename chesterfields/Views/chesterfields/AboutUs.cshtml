@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "AboutUs";
+}
+@if (Session["UserName"] == null)
+{
+    <script>
+        window.onload = function () {
+            {
+                window.location.href = "@Url.Action("index","Chesterfields")";
+            }
+        }
+    </script>
+}
+<div class="container-fluid" style="padding:0px">
+    <img src="~/Content/images/Hotel13_Main.jpg" width="100%" />
+</div>
+
+<div class="container" style="padding:50px">
+    <p style="font-size: 40px;padding-bottom:20px;"><strong>About Us</strong></p>
+
+    <p style="font-size: 22px;">At Chesterfields, our passion is to connect our guests to the very best of our destinations. From the beaches of Mumbai and Chennai to the deserts of the Rajasthan to the heart of india, our hotels offer guests extraordinary places, created by combining unique architecture and structure, expressive decor and artistry, and magnificent features. Add great service, and the result is an unforgettable guest experience.</p>
+
+    <p style="font-size: 22px;">
+        We’re proud to welcome you to our collection, which includes some of the most iconic hotels in the world, including Gardenia at Bangalore, The Rajputana at Jaipur, Windsor in Greece and Athena at Bali. We invite you to think of these, or any of our 12 hotels around the world, as your home base for all of your adventures.
+
+    </p>
+    <p style="font-size: 22px;">With a string of firsts to its credit, The Chesterfields Hotels pioneered the concepts of branded accommodation, branded cuisine, environment and guest safety. The Chesterfields Hotels is an exemplar in sustainable hospitality with all its premium hotels being LEED® Platinum certified.</p>
+
+    <p style="font-size: 22px;">As one of India’s premier corporations, The Chesterfields Hotels’ seeks to fulfill a larger role by enlarging its contribution to the society of which it is a part. The trusteeship role related to social and environmental resources, aligned to the pursuit of economic objectives, is the cornerstone of its Environment, Health & Safety philosophy for which it has won many awards and accolades. </p>
+
+    <p style="font-size: 22px;">At any Chesterfield Hotel you will find a true reflection of culture and ethos of each destination and One Common Legacy – Warmth.</p>
+
+</div>

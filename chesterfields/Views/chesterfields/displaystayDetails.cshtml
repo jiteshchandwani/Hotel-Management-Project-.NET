@@ -1,0 +1,211 @@
+﻿@model chesterfields.Models.StayDetails
+
+@{
+    ViewBag.Title = "displaystayDetails";
+}
+@if (Session["UserName"] == null)
+{
+    <script>
+        window.onload = function () {
+            {
+                window.location.href = "@Url.Action("index","Chesterfields")";
+            }
+        }
+    </script>
+}
+<style>
+    .vl {
+        border-left: 1px solid black;
+        margin-left: 870px;
+        height: 400px;
+    }
+
+    .vl2 {
+        border-bottom: 1px solid black;
+        margin-left: 410px;
+        margin-right: 480px;
+        margin-top: 10px;
+    }
+
+    #vl1 {
+        border-left: 1px solid black;
+        margin-left: 400px;
+        height: 400px;
+    }
+
+    body {
+        font-family: Raleway;
+        background-color: #e8e1d7;
+    }
+
+    #popupboxpay {
+        margin: 40%;
+        margin-left: 30%;
+        margin-top: 50px;
+        padding-top: 10px;
+        width: 40%;
+        height: 300px;
+        position: absolute;
+        background: rgba(0,0,0,.9);
+        border: solid #000000 2px;
+        z-index: 5000;
+        font-family: arial;
+        visibility: hidden;
+        border-radius: 25px;
+        color: white;
+        position: fixed;
+    }
+</style>
+
+<div id="popupboxpay">
+    <center><h1 style="padding:20px">Proceed to pay</h1></center>
+    <div class="col-sm-6" style="padding:20px">
+        @using (Html.BeginForm("makePayment", "chesterfields", FormMethod.Post, new { }))
+        {
+
+            <div style="display:none">@Html.TextBox("customerid", Session["CustomerId"], new { @class = "form-control" })</div>
+            <div style="display:none">@Html.TextBox("hotelid", (int)ViewBag.hid, new { @class = "form-control" })</div>
+            <div style="display:none">@Html.TextBox("roomId", (int)ViewBag.rid, new { @class = "form-control" })</div>
+            <div style="display:none">@Html.TextBox("checkin", @Html.DisplayFor(modelItem => Model.checkin), new { @class = "form-control" })</div>
+            <div style="display:none">@Html.TextBox("checkout", @Html.DisplayFor(modelItem => Model.checkout), new { @class = "form-control" })</div>
+            <div style="display:none">@Html.TextBox("noofrooms", @Html.DisplayFor(modelItem => Model.noofrooms), new { @class = "form-control" })</div>
+            <div style="display:none">@Html.TextBox("noofguests", @Html.DisplayFor(modelItem => Model.noofguests), new { @class = "form-control" })</div>
+            <div style="display:none">@Html.TextBox("Amount", (double)ViewBag.Amt, new { @class = "form-control" })</div>
+
+            <center><button class="btn btn-info" type="submit">Pay Online</button></center>
+        }
+    </div>
+    <div class="col-sm-6" style="padding:20px">
+        @using (Html.BeginForm("TqforBookingPayAtHotel", "chesterfields", FormMethod.Post, new { }))
+        {
+
+            <div style="display:none">@Html.TextBox("customerid", Session["CustomerId"], new { @class = "form-control" })</div>
+            <div style="display:none">@Html.TextBox("hotelid", (int)ViewBag.hid, new { @class = "form-control" })</div>
+            <div style="display:none">@Html.TextBox("roomId", (int)ViewBag.rid, new { @class = "form-control" })</div>
+            <div style="display:none">@Html.TextBox("checkin", @Html.DisplayFor(modelItem => Model.checkin), new { @class = "form-control" })</div>
+            <div style="display:none">@Html.TextBox("checkout", @Html.DisplayFor(modelItem => Model.checkout), new { @class = "form-control" })</div>
+            <div style="display:none">@Html.TextBox("noofrooms", @Html.DisplayFor(modelItem => Model.noofrooms), new { @class = "form-control" })</div>
+            <div style="display:none">@Html.TextBox("noofguests", @Html.DisplayFor(modelItem => Model.noofguests), new { @class = "form-control" })</div>
+            <div style="display:none">@Html.TextBox("Amount", (double)ViewBag.Amt, new { @class = "form-control" })</div>
+            <center> <button class="btn btn-info" type="submit">Pay At Hotel</button> </center>
+        }
+    </div>
+
+</div>
+<div class="container-fluid" style="padding:0px">
+    <video width="100%" autoplay muted loop style="position: relative;">
+        <source src="~/Content/video/Lobby%20of%20ITC%20Grand%20Chola,%20Chennai.mp4" type="video/mp4" />
+    </video>
+</div>
+<h1 style="text-align: center;margin-top: 70px;">REVIEW AND PAY</h1>
+<div class="container-fluid" style="margin-top: 70px;">
+
+    <div class="row">
+        <div class="col-sm-4">
+
+            <img src="~/Content/images/Hotel5_Main.jpg" style="width: 420px; height:  400px;">
+        </div>
+        <div class="col-sm-4">
+            <h2>Stay Details</h2>
+            <table style="font-size: 18px;margin-top: 20px;">
+                <tr>
+                    <td>Hotel : </td>
+                    <td style="padding-left: 10px;" colspan="4">
+                        <strong>@Html.DisplayFor(modelItem => Model.hotellist.Hotel_Name)</strong><br>
+                        @Html.DisplayFor(modelItem => Model.hotellist.Hotel_Address)<br>
+                        @Html.DisplayFor(modelItem => Model.hotellist.Hotel_Contact)<br>
+                        @Html.DisplayFor(modelItem => Model.hotellist.Hotel_Email)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Check In : </td>
+                    <td style="padding-left: 10px;padding-top: 10px;"><strong> @Html.DisplayFor(modelItem => Model.checkin)</strong></td>
+                </tr>
+                <tr>
+                    <td>Check Out : </td>
+                    <td style="padding-left: 10px;padding-top: 10px;"><strong> @Html.DisplayFor(modelItem => Model.checkout)</strong></td>
+                </tr>
+                <tr>
+                    <td>Room Type : </td>
+                    <td style="padding-left: 10px;padding-top: 10px;"><strong>@Html.DisplayFor(modelItem => Model.roomdetaillist.RoomType)</strong></td>
+                </tr>
+                <tr>
+                    <td>Room :</td>
+                    <td style="padding-left: 10px;padding-top: 10px;"><strong> @Html.DisplayFor(modelItem => Model.noofrooms)</strong></td>
+                </tr>
+                <tr>
+                    <td>No. of Guests:</td>
+                    <td style="padding-left: 10px;padding-top: 10px;"><strong> @Html.DisplayFor(modelItem => Model.noofguests)</strong></td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td style="padding-left: 10px;padding-top: 10px;"><strong>Rs @Html.DisplayFor(modelItem => Model.roomdetaillist.Price)</strong></td>
+                </tr>
+                <tr>
+                    <td>Deposite Amount</td>
+                    <td style="padding-left: 10px;padding-top: 10px;"><strong>Rs @ViewBag.Amt</strong></td>
+                </tr>
+            </table>
+        </div>
+        <div class="vl"></div>
+    </div>
+</div>
+<br>
+<div class="vl2"></div>
+<div class="container-fluid" style="margin-top: 30px;">
+
+    <div class="row">
+
+
+        <div class="col-sm-4" id="vl1">
+            <h2>Guest Details</h2>
+            <table style="font-size: 18px;margin-top: 30px;">
+                <tr>
+                    <td>Name: </td>
+                    <td style="padding-left: 10px;padding-top: 10px;"><strong> @Html.DisplayFor(modelItem => Model.customerinfolist.CustomerName)</strong></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td style="padding-left: 10px;padding-top: 10px;"><strong> @Html.DisplayFor(modelItem => Model.customerinfolist.Customer_Address)</strong></td>
+                </tr>
+                <tr>
+                    <td>Contact:</td>
+                    <td style="padding-left: 10px;padding-top: 10px;"><strong>  @Html.DisplayFor(modelItem => Model.customerinfolist.Phone_Number)</strong></td>
+                </tr>
+                <tr>
+                    <td>E-mail:</td>
+                    <td style="padding-left: 10px;padding-top: 10px;"><strong> @Html.DisplayFor(modelItem => Model.customerinfolist.Email)</strong></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-4">
+
+            <img src="~/Content/images/Hotel6_slider1.jpg" style="width: 420px; height:400px;">
+        </div>
+    </div>
+</div>
+@*<div class="container-fluid" style="font-size: 20px; margin-top: 100px;margin-left: 40px;">
+    <input type="checkbox" name="1" value="1">I have read and accepted the Terms & Conditions, Disclaimer and Privacy Policy.<br><br>
+    <input type="checkbox" name="2" value="2">I have read and understood the Cancellation and Refund Policy.<br><br>
+    <input type="checkbox" name="3" value="3">I would like to receive information from The Chesterfield Hotels about the new offers and updates about the ongoing food promotions and events.<br><br>
+    <p><strong>You will now be redirected to a secure payment gateway of your choice. This may take a few minutes depending upon your internet speed. Please do not press Refresh or the Back button.</strong></p><br>*@
+
+@*</div>*@
+<div class="container">
+    <div class="col-sm-10"></div><div class="col-sm-2">
+        <a href="javascript:ptp('show');" class="btn btn-warning" style="margin-top: 23px;  margin-bottom:30px; font-size:30px">Proceed To Pay</a>
+    </div>
+</div>
+<script>
+    function ptp(showhide) {
+
+        if (showhide == "show") {
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById('popupboxpay').style.visibility = "visible";
+        }
+        else if (showhide == "hidee") {
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById('popupboxpay').style.visibility = "hidden";
+        }
+    }
+</script>

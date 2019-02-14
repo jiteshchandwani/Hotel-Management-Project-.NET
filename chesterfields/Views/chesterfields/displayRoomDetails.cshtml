@@ -1,0 +1,197 @@
+﻿@model chesterfields.Models.RoomDetails
+
+@{
+    ViewBag.Title = "displayRoomDetails";
+}
+@if (Session["UserName"] == null)
+{
+    <script>
+        window.onload = function () {
+            {
+                window.location.href = "@Url.Action("index","Chesterfields")";
+            }
+        }
+    </script>
+}
+<style type="text/css">
+    .object {
+        animation: MoveUpDown 4s linear infinite;
+        position: absolute;
+        left: 13%;
+        bottom: 0;
+    }
+
+    .object2 {
+        animation: MoveDownUp 4s linear infinite;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+    }
+
+    @@keyframes MoveUpDown {
+        0%, 100% {
+            bottom: 0;
+        }
+
+        50% {
+            bottom: 30px;
+        }
+    }
+
+    @@keyframes MoveDownUp {
+        0%, 100% {
+            bottom: 30px;
+        }
+
+        50% {
+            bottom: 0px;
+        }
+    }
+
+    body {
+        background-color: #e8e1d7;
+        font-family: Raleway;
+    }
+
+    #popupboxroom {
+        margin: 40%;
+        margin-left: 30%;
+        margin-top: 50px;
+        padding-top: 10px;
+        width: 40%;
+        height: 300px;
+        position: absolute;
+        background: rgba(0,0,0,.9);
+        border: solid #000000 2px;
+        z-index: 5000;
+        font-family: arial;
+        visibility: hidden;
+        border-radius: 25px;
+        color: #D2AC67;
+        position: fixed;
+    }
+</style>
+
+<div class="container-fluid" style="padding:0px">
+
+    <video width="100%" autoplay muted loop style="position: relative;">
+        <source src="~/Content/video/Presidential%20Suite%20at%20ITC%20Maurya,%20New%20Delhi.mp4" type="video/mp4" />
+    </video>
+
+
+    <h1 style="text-align: center;font-size: 40px;margin-top: 50px;color:#2E291E;">CHOOSE YOUR ROOM TYPE</h1>
+</div>
+
+<div class="container" style="left: 50%; padding-bottom:150px">
+    @{ var i = 0;
+        ViewBag.c1 = "#A5B5AA";
+        ViewBag.c2 = "#6C6B7A";
+        ViewBag.c3 = "#296F8C";
+        ViewBag.c4 = "#b77777";
+        ViewBag.c5 = "#a6af83";
+
+
+    }
+    @foreach (var item in Model.roomdetailinfo)
+    {
+        i++;
+        if (i % 2 != 0)
+        {
+            <div class="container" style="padding: 100px;position: relative; margin-top: 200px;">
+                <div class="object" style="background-color: @{if (i == 1)
+                    {@ViewBag.c1}
+                    else if (i == 3)
+                    {@ViewBag.c3}
+                        else if (i == 5) { @ViewBag.c5 } }; color: white; z-index: 1;width: 450px;height: 300px;">
+                    <CENTER style="margin-top: 40px;font-weight: BOLD;">
+                        <h1>@Html.DisplayFor(Model => item.RoomType)</h1>
+                        <p style="font-size:20px;">Floor No. : @Html.DisplayFor(Model => item.Floor_No)</p>
+                        <p style="font-size:20px;">Occupancy : @Html.DisplayFor(Model => item.Occupancy)</p>
+                        <p style="font-size:20px;">Price :@Html.DisplayFor(Model => item.Price)</p>
+                        <br><br>
+                        @*<div class="col-sm-6" style="text-align: center;">
+                                <button class="btn btn-secondary"><a href="javascript:room('show');">Room Details</a></button>
+                            </div>*@
+
+                        <div style="text-align: center;">
+                            @using (Html.BeginForm("RoomAvailabilityView", "chesterfields", FormMethod.Post, new { }))
+                            {
+                                <div style="display:none">@Html.TextBox("HotelId", @Html.DisplayFor(Model => item.Hotel_Id), new { @class = "form-control" })</div>
+                                <div style="display:none">@Html.TextBox("Roomid", @Html.DisplayFor(Model => item.RoomTypeId), new { @class = "form-control" })</div>
+                                <button class="btn btn-secondary" type="submit">Reserve Now</button>
+                            }
+                        </div>
+                    </CENTER>
+                </div>
+                <div class="object2"><img src="@Html.DisplayFor(Model => item.Room_Image_Path)" style="height: 350px;width: 500px;"></div>
+            </div>
+        }
+        else
+        {
+            <div class="container" style="padding: 100px; position: relative; margin-top: 300px;">
+                <div class="object"><img src="@Html.DisplayFor(Model => item.Room_Image_Path)" style="height: 350px;width: 500px;"></div>
+                <div class="object2" style="background-color:  @{if (i == 2)
+                    {@ViewBag.c2}
+                    else if (i == 4)
+                    {@ViewBag.c4}
+                        }; color: white; z-index: 1;width: 450px;height: 300px;">
+                    <CENTER style="margin-top: 40px;font-weight: BOLD;">
+                        <h1>@Html.DisplayFor(Model => item.RoomType)</h1>
+                        <p style="font-size:20px;">Floor No. : @Html.DisplayFor(Model => item.Floor_No)</p>
+                        <p style="font-size:20px;">Occupancy : @Html.DisplayFor(Model => item.Occupancy)</p>
+                        <p style="font-size:20px;">Price : @Html.DisplayFor(Model => item.Price)</p>
+                        <br><br>
+                        @*<div class="col-sm-6" style="text-align: center;">
+                                <button class="btn btn-secondary"><a href="javascript:room('show');">Room Details</a></button>
+                            </div>*@
+
+                        <div style="text-align: center;">
+                            @using (Html.BeginForm("RoomAvailabilityView", "chesterfields", FormMethod.Post, new { }))
+                            {
+                                <div style="display:none">@Html.TextBox("HotelId", @Html.DisplayFor(Model => item.Hotel_Id), new { @class = "form-control" })</div>
+                                <div style="display:none">@Html.TextBox("Roomid", @Html.DisplayFor(Model => item.RoomTypeId), new { @class = "form-control" })</div>
+
+                                <button class="btn btn-secondary" type="submit">Reserve Now</button>
+                            }
+                        </div>
+                    </CENTER>
+                </div>
+
+            </div>
+        }
+
+
+    }
+    @*<div id="popupboxroom">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+
+                    <center><a href="javascript:room('hide');">close</a></center>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
+        <script>
+
+            function room(showhide) {
+
+                if (showhide == "show") {
+                    document.getElementById("overlay").style.display = "block";
+                    document.getElementById('popupboxroom').style.visibility = "visible";
+                } else if (showhide == "hide") {
+                    document.getElementById("overlay").style.display = "none";
+                    document.getElementById('popupboxroom').style.visibility = "hidden";
+                }
+
+            }
+
+        </script>*@
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,194 @@
+﻿
+@{
+    ViewBag.Title = "RoomAvailabilityView";
+}
+@if (Session["UserName"] == null)
+{
+    <script>
+        window.onload = function () {
+            {
+                window.location.href = "@Url.Action("index","Chesterfields")";
+            }
+        }
+    </script>
+}
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="~/Content/css/reset.css">
+<link rel="stylesheet" type="text/css" href="~/Content/css/jquery-responsiveGallery.css">
+<style type="text/css">
+
+
+    input {
+        background-color: #ffffff;
+    }
+
+    .w-gallery {
+        margin-top: 80px;
+    }
+
+    .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+        background-color: #bfb99b;
+    }
+
+    .ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+        color: black;
+        width: 49%;
+    }
+</style>
+<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="Stylesheet"
+      type="text/css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script language="javascript">
+    $(document).ready(function () {
+        $("#from").datepicker({
+            minDate: 0
+        });
+    });
+
+    $(document).ready(function () {
+        $("#to").datepicker({
+            minDate: 0
+        });
+    });
+</script>
+<script type="text/javascript" src="~/Content/js/modernizr.custom.js"></script>
+<script type="text/javascript" src="~/Content/js/jquery.responsiveGallery.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.responsiveGallery-wrapper').responsiveGallery({
+            animatDuration: 400,
+            $btn_prev: $('.responsiveGallery-btn_prev'),
+            $btn_next: $('.responsiveGallery-btn_next')
+        });
+    });
+</script>
+
+<div class="container-fluid" style="padding:0px">
+    <video width="100%" autoplay muted loop style="position: relative;">
+        <source src="~/Content/video/Luxury%20Dining%20at%20ITC%20Grand%20Central,%20Mumbai.mp4" type="video/mp4" />
+    </video>
+</div>
+<div class="container" style="margin-top: 50px;margin-bottom:50px">
+    <ul class="nav nav-pills" style="font-size: 25px;">
+        <li class="active"><a data-toggle="pill" href="#home" style="color:black;">Overview</a></li>
+        <li><a data-toggle="pill" href="#menu1" style="color:black;">Gallery</a></li>
+        <li><a data-toggle="pill" href="#menu2" style="color:black;">Availability</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+
+            <p style="font-size: 22px;margin-top: 20px;">The Chesterfied rooms offer a well-appointed refuge that expresses a distinct old world sensibility in decor combined with world class hospitality.</p>
+            <br><br>
+            <ul style="list-style-type:square ;font-size: 20px;">
+                <strong style="font-size: 25px;margin-bottom: 40px;">Privileges:</strong>
+
+
+                <li>Airport facilitation on arrival / departure.</li>
+                <li>Personalised check-in & check-out.</li>
+                <li>Welcome drink on arrival.</li>
+                <li>Buffet breakfast at the Coffee Shop or lounge</li>
+                <li>Usage of 24-hour boardrooms for up to three hours, once during the stay (subject to availability).</li>
+                <li>Luxury Hours at Point Of View Lounge, cocktails offer between 6 to 8 pm.</li>
+                <li>Access to the fitness centre and swimming pool.</li>
+                <li>Access to exclusive lounge facility with tea/coffee service.</li>
+                <li>Coffee/tea maker ensemble in the room.</li>
+                <li>Daily fruit platter.</li>
+                <li>Two bottles of 500 ml packaged mineral water, replenished daily.</li>
+                <li>High Speed Internet Access / WiFi services (if booked through www.itchotels.in).</li>
+            </ul>
+        </div>
+        <div id="menu1" class="tab-pane ">
+            <div class="w-gallery">
+                <section id="responsiveGallery-container" class="responsiveGallery-container">
+                    <a class="responsiveGallery-btn responsiveGallery-btn_prev" href="javascript:void(0);"></a>
+                    <a class="responsiveGallery-btn responsiveGallery-btn_next" href="javascript:void(0);"></a>
+                    <ul class="responsiveGallery-wrapper">
+                        <li class="responsiveGallery-item">
+                            <a href="#" class="responsivGallery-link"><img src=" ~/Content/images/gal1.jpg" class="responsivGallery-pic"></a>
+
+                        </li>
+                        <li class="responsiveGallery-item">
+                            <a href="#" class="responsivGallery-link"><img src="~/Content/images/gal2.jpg" height="420px" width="520px" alt="" class="responsivGallery-pic"></a>
+
+                        </li>
+                        <li class="responsiveGallery-item">
+                            <a href="#" class="responsivGallery-link"><img src="~/Content/images/gal3.jpg" height="420px" width="520px" alt="" class="responsivGallery-pic"></a>
+
+                        </li>
+                        <li class="responsiveGallery-item">
+                            <a href="#" class="responsivGallery-link"><img src="~/Content/images/gal4.jpg" height="420px" width="520px" alt="" class="responsivGallery-pic"></a>
+
+                        </li>
+                        <li class="responsiveGallery-item">
+                            <a href="#" class="responsivGallery-link"><img src="~/Content/images/gal5.jpg" height="420px" width="520px" alt="" class="responsivGallery-pic"></a>
+
+                        </li>
+                        <li class="responsiveGallery-item">
+                            <a href="#" class="responsivGallery-link"><img src="~/Content/images/gal6.jpg" height="420px" width="520px" alt="" class="responsivGallery-pic"></a>
+
+                        </li>
+                        <li class="responsiveGallery-item">
+                            <a href="#" class="responsivGallery-link"><img src="~/Content/images/gal7.jpg" height="420px" width="520px" alt="" class="responsivGallery-pic"></a>
+
+                        </li>
+                        <li class="responsiveGallery-item">
+                            <a href="#" class="responsivGallery-link"><img src="~/Content/images/gal8.jpg" height="420px" width="520px" alt="" class="responsivGallery-pic"></a>
+
+                        </li>
+                        <li class="responsiveGallery-item">
+                            <a href="#" class="responsivGallery-link"><img src="~/Content/images/gal9.jpg" height="420px" width="520px" alt="" class="responsivGallery-pic"></a>
+
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <div id="menu2" class="tab-pane fade">
+            <table style="width: 620px;
+   margin-top: 50px;
+    border: 2px solid black;
+    margin-left: 230px;
+    font-size: 25px;">
+                @using (Html.BeginForm("displaystayDetails", "chesterfields", FormMethod.Post, new { }))
+                {
+                    <tr>
+                        <div style="display:none">@Html.TextBox("customerid", Session["CustomerId"], new { @class = "form-control" })</div>
+                        <div style="display:none">@Html.TextBox("hotelid", (string)ViewBag.hid, new { @class = "form-control" })</div>
+                        <div style="display:none">@Html.TextBox("roomId", (string)ViewBag.rid, new { @class = "form-control" })</div>
+                        <td style="padding-left: 20px;padding-top: 20px;">Check In:</td>
+                        <td> @Html.TextBox("checkindate", null, new { @id = "from", @autocomplete = "off", @readonly = "true", @required = "required" })</td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 20px;padding-top: 20px;">Check Out:</td>
+                        <td>@Html.TextBox("checkoutdate", null, new { @id = "to", @autocomplete = "off", @readonly = "true", @required = "required" })</td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 20px;padding-top: 20px;">No. Of Rooms:</td>
+                        <td>
+                            @Html.TextBox("Number_of_rooms", null, new { @autocomplete = "off", @pattern = "^[0-9]{1,2}$", @required = "required", @max = "10", @title = "You can Book not more than 10 rooms at a time." })
+                                                @Html.ValidationMessage("Number_of_rooms", null, new { @class = "text-danger", @style = "color:#ffae42" })
+                                            </td>
+
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 20px;padding-top: 20px;">No. Of Guests:</td>
+                        <td>
+                            @Html.TextBox("Number_of_Guests", null, new { @autocomplete = "off", @pattern = "^[0-9]{1,2}$", @required = "required", @max = "10", @title = "Maximum Accomodation is limited to 10 People" })
+                                                @Html.ValidationMessage("Number_of_Guests", null, new { @class = "text-danger", @style = "color:#ffae42" })
+                                            </td>
+                    </tr>
+                    <tr>
+
+                        <td colspan="2" style="padding-left: 150px;padding-top: 20px;padding-bottom: 20px;"><center><button type="submit" class="btn btn-default btn-lg"><strong style="font-size:20px;">Book Now</strong></button></center></td>
+                    </tr>
+                }
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
